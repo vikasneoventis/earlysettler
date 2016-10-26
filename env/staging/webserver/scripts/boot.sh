@@ -29,18 +29,11 @@ then
     fi
 fi
 
-# add some code here to add nfs mount information to /etc/fstab then execute "mount -a"
-NFS_MOUNT=`grep "nfs:" /etc/fstab | wc -l`
-if [ 0 = $NFS_MOUNT ]
-then
-    echo "10.0.1.100:/mnt/web /mnt/web nfs4 timeo=3,retrans=3,actimeo=10,retry=3,soft,intr,rsize=32768,wsize=32768 0 0" >> /etc/fstab
-fi
-umount -fl /mnt/web
-mount -a
-
-chkconfig nfs on; chkconfig rpcbind on; chkconfig nfslock on; chkconfig vsftpd on
-service nfs restart
-sleep 5
+# Install nfs client and set up fstab to mount media volume
+yum install nfs-utils nfs-utils-lib -y
+echo "$NFS_INTERNAL_IP  nfs" >> /etc/hosts
+echo "nfs:/mnt/web /mnt/web nfs4 timeo=3,retrans=3,actimeo=10,retry=3,soft,intr,rsize=32768,wsize=32768 0 0" >> /etc/fstab
+mkdir /mnt/web
 
 # Create magento directory in EBS
 echo "Creating magento logs inside /mnt/web/log"

@@ -20,7 +20,6 @@ nginx:
     - "80:8080"
   volumes:
     - ./config/nginx/www.earlysettler.com.au.conf:/etc/nginx/conf.d/www.earlysettler.com.au.conf
-    - ./config/nginx/www.earlysettler.co.nz.conf:/etc/nginx/conf.d/www.earlysettler.co.nz.conf
     - ./config/nginx/magento.conf.base:/etc/nginx/conf.d/magento.conf.base
     - $WEBSITE_PATH:/var/www
     - /mnt/web:/mnt/web

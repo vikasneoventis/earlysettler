@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_onepage_controller_success_action">
+        <observer name="ec" instance="Anowave\Ec\Observer\Success" />
+    </event>
+    <event name="multishipping_checkout_controller_success_action">
+        <observer name="ec" instance="Anowave\Ec\Observer\Success" />
+    </event>
+</config>

@@ -1,0 +1,46 @@
+/* ============================================ *
+ * Quick short Responsive Styles
+ * ============================================ */
+
+.bp-mobile-only {
+    .easy-display(none, 'block !important');
+}
+
+.bp-tablet-up {
+    .easy-display(block, none);
+}
+
+.bp-tablet-down {
+    .easy-display(none, block, block);
+}
+
+.bp-tablet-only {
+    .easy-display(none, none, block);
+}
+
+.bp-desktop-up {
+    .easy-display(block, none, none);
+}
+
+.bp-desktop-only {
+    .easy-display(block, none, none);
+}
+
+
+/* ============================================ *
+ * no display
+ * ============================================ */
+
+.unvisible {
+    display: block !important;
+    visibility: hidden !important;
+}
+
+/* ============================================ *
+ * Nice Select
+ * ============================================ */
+
+.nice-select {
+    //.lib-form-element-input(@_type: select);
+    &:extend(select);
+}

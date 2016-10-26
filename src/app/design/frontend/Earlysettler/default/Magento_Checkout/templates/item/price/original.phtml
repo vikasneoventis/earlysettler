@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Checkout\Block\Item\Price\Renderer */
+
+$_item = $block->getItem();
+?>
+<?php if($_item->getCalculationPrice() != $_item->getOriginalPrice()) : ?>
+<span class="original-price price-including-tax" data-label="<?php echo $block->escapeHtml(__('Excl. Tax')); ?>">
+    <span class="label"><?php echo $block->escapeHtml(__('Was')); ?></span>
+    <span class="cart-price">
+        <?php /* @escapeNotVerified */ echo $this->helper('Magento\Checkout\Helper\Data')->formatPrice($_item->getOriginalPrice()) ?>
+    </span>
+</span>
+<?php endif ?>

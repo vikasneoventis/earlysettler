@@ -1,0 +1,37 @@
+earlysettler_staging_php-fpm:
+  container_name: $PHPFPM_CONTAINER_NAME
+  extends:
+    file: ../common/docker-compose.yml
+    service: php-fpm
+  volumes:
+    - ./config/php-fpm/deploy.ini:/etc/php.d/zzzz-deploy.ini
+    - $WORKSPACE_SPECIFIC:/var/www
+  environment:
+    - WEBSERVER_PORT=$WEBSERVER_PORT
+    - WEBSERVER_IP=$WEBSERVER_IP
+    - DB_USER=$DB_USER
+    - DB_PASSWORD=$DB_PASSWORD
+    - DB_NAME=$DB_NAME
+
+earlysettler_staging_nginx:
+  container_name: $NGINX_CONTAINER_NAME
+  extends:
+    file: ../common/docker-compose.yml
+    service: nginx
+  volumes:
+    - ./config/nginx/deploy.conf:/etc/nginx/conf.d/deploy.conf
+    - $WORKSPACE_SPECIFIC:/var/www
+  environment:
+    - WEBSERVER_PORT=$WEBSERVER_PORT
+    - WEBSERVER_IP=$WEBSERVER_IP
+  links:
+    - earlysettler_staging_php-fpm:php-fpm
+  ports:
+    - "$WEBSERVER_PORT:8080"
+earlysettler_aws_cli:
+  container_name: $AWS_CONTAINER_NAME
+  extends:
+    file: ../common/docker-compose.yml
+    service: aws-cli
+  volumes:
+    - $WORKSPACE_SPECIFIC:/var/www

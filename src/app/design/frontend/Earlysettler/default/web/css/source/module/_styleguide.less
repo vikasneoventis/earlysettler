@@ -1,0 +1,207 @@
+//
+// Magento Enterprise Edition
+//
+// NOTICE OF LICENSE
+//
+// This source file is subject to the Magento Enterprise Edition End User License Agreement
+// that is bundled with this package in the file LICENSE_EE.txt.
+// It is also available through the world-wide-web at this URL:
+// http://www.magento.com/license/enterprise-edition
+// If you did not receive a copy of the license and are unable to
+// obtain it through the world-wide-web, please send an email
+// to license@magento.com so we can send you a copy immediately.
+//
+// DISCLAIMER
+//
+// Do not edit or add to this file if you wish to upgrade Magento to newer
+// versions in the future. If you wish to customize Magento for your
+// needs please refer to http://www.magento.com for more information.
+//
+// @category    design
+// @package     rwd_default
+// @copyright Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+// @license http://www.magento.com/license/enterprise-edition
+//
+
+/* ============================================ *
+ * StyleGuide
+ * ============================================ */
+
+// ----------------------------------------------
+// Content for static pages
+.cms-style-guide {
+    .page-title {
+        font-family: @f-stack-second-sans;
+        font-size: 38px;
+    }
+    h5 {
+
+    }
+    ul, ol {
+        list-style: none;
+        padding:0;
+    }
+    .page-wrapper {
+        & > header,
+        & > footer,
+        & > .breadcrumbs,
+        & > .copyright,
+        & > .header-container,
+        & > .nav-sections {
+            display: none;
+        }
+    }
+
+    .page-main {
+        max-width: 100%;
+    }
+}
+.style-guide-container {
+    [class*="-group-type"] {
+        > ul {
+            padding: 0;
+        }
+    }
+    .col2-set {
+        &:after {
+            .clearfix();
+        }
+        & > [class*="col-"] {
+            width: 49%;
+            margin-left: 2%;
+            float:left;
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+    .sg-section-title {
+        font-family: @f-stack-second-sans;
+        font-size: 30px;
+        color: #999;
+        margin: 20px 0;
+        text-transform: capitalize;
+        font-weight: normal;
+    }
+    .button-group-type {
+        background: none;
+        border: none;
+        padding: 0;
+        ul {
+          margin:10px 0;
+          li {
+            display:inline-block;
+            margin-right: 7px;
+          }
+        }
+    }
+    .input-option-group-type ul {
+        width: 49%;
+        display: inline-block;
+        li {
+            margin: 10px 0;
+        }
+    }
+    .input-field-group-type {
+        ul {
+            li {
+                display:block;
+                clear:both;
+                .nice-select {
+                    margin:0;
+                    width: 320px;
+                }
+                #search,
+                input {
+                    /*margin: 10px 0 0;
+                    width: 320px;*/
+                }
+
+            }
+        }
+    }
+    .typo-group-type {
+        .breadcrumbs {
+            margin: 20px 0;
+        }
+        .text-link-type {
+
+        }
+        h1,h2,h3,h4,h5 {
+            text-transform: capitalize;
+            font-weight: normal;
+        }
+        .heading-type{
+
+            h1 {
+                font-family: @f-stack-serif;
+                font-size: 42px;
+                line-height: 25px;
+            }
+            h2 {
+                font-family: @f-stack-serif;
+                font-size: 40px;
+                line-height: 25px;
+            }
+            h3 {
+                font-family: @f-stack-sans;
+                font-weight:bold;
+                font-size: 24px;
+                line-height: 15px;
+            }
+            h4 {
+                font-family: @f-stack-sans;
+                font-size: 24px;
+            }
+            h5 {
+                font-family: @font-family__base;
+                font-weight:bold;
+                font-size: 16px;
+            }
+            h5 ~ h5 {
+                font-weight: normal;
+            }
+        }
+        .heading-content-type {
+            h1 {
+                font-family: @f-stack-semibold;
+                font-size: @f-size-xl + 2px;
+            }
+            h2 {
+                font-family: @f-stack-semibold;
+                font-size: @f-size-l;
+            }
+        }
+    }
+    .misc-group-type {
+        & > * {
+            clear:both;
+        }
+        .flickity-page-dots {
+            position: static;
+            text-align: left;
+        }
+        .pages {
+
+        }
+        .add-to-links a {
+            padding:0;
+        }
+        .rating-box {
+            display: block;
+            margin: 10px 0;
+            span {
+                color: transparent;
+            }
+        }
+    }
+    .message-group-type {
+        .messages {
+            & > li {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+

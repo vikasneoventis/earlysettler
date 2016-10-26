@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.wrapper">
+            <container name="header.panel.wrapper" htmlClass="panel wrapper" htmlTag="div" before="-"/>
+            <block class="Magento\Theme\Block\Html\Header" name="header.content" template="html/header.phtml" before="page.top">
+                <container name="toplinks-header" label="Header Links" as="toplinks-header" htmlTag="div" htmlClass="toplinks-wrapper"/>
+
+                <container name="navigation-header" label="Navigation" as="navigation-header" htmlTag="div" htmlId="store.menu" htmlClass="section-item-content nav-sections-item-content"/>
+
+                <container name="toplinks-header" label="Header Links" as="toplinks-header" htmlTag="div" htmlClass="toplinks-wrapper">
+                    <block class="Magento\Framework\View\Element\Html\Links" name="top.links">
+                        <arguments>
+                            <argument name="css_class" xsi:type="string">header links</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <container name="cart-header" label="Mini Cart" as="cart-header" htmlTag="div" htmlClass="cart-wrapper"/>
+
+                <container name="logo-header" label="Search" as="logo-header" htmlTag="div" htmlClass="logo-wrapper">
+                    <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
+                        <arguments>
+                            <argument name="logo_img_width" xsi:type="number">151</argument>
+                            <argument name="logo_img_height" xsi:type="number">70</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <container name="search-header" label="Search" as="search-header" htmlTag="div" htmlClass="search-wrapper">
+                    <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" />
+                </container>
+
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="header" remove="true"/>
+        <referenceContainer name="header.panel" remove="true"/>
+        <referenceBlock name="navigation.sections" remove="true"/>
+        <referenceBlock name="register-link" remove="true"/>
+        <move element="minicart" destination="cart-header"/>
+
+        <move element="catalog.compare.link" destination="compare-header-link"/>
+        <move element="logo" destination="logo-header" before="-"/>
+        <move element="catalog.topnav" destination="navigation-header"/>
+        <referenceBlock name="catalog.topnav" class="Earlysettler\Megamenu\Block\Html\Topmenu" template="Magento_Theme::html/topmenu.phtml"/>
+
+        <referenceContainer name="footer-container">
+            <container name="footer" as="footer" label="Page Footer" htmlTag="div" htmlClass="footer footer-wrapper">
+                <block class="Magento\Theme\Block\Html\Footer" name="footer.content" template="html/footer.phtml"/>
+            </container>
+        </referenceContainer>
+        <referenceBlock name="report.bugs" remove="true"/>
+        <move element="copyright" destination="before.body.end"/>
+    </body>
+</page>

@@ -1,0 +1,7 @@
+<?php if (false !== $data = $this->getSearchPush()): ?>
+	<script>
+		dataLayer.push(<?php echo $data->push ?>);
+
+		window.google_tag_params.ecomm_category = '<?php echo __('Search Results') ?>';
+	</script>
+<?php endif ?>

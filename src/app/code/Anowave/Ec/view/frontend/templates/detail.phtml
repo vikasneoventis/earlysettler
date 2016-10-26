@@ -1,0 +1,21 @@
+<?php if (false !== $data = $this->getDetailPush()): ?>
+
+	<script type="text/javascript">
+	
+		/* Set ecomm_pagetype */
+		window.google_tag_params.ecomm_pagetype = 'product';
+		window.google_tag_params.ecomm_prodid	= '<?php echo $this->getBlock()->getProduct()->getSku() ?>';
+	
+		/**
+	     * Push product details to dataLayer[] object 
+		 */
+		EC.push(function(dataLayer)
+		{
+			dataLayer.push(<?php echo $data ?>);
+		});
+	
+		window.G = <?php echo $this->getDetailGroup() ?>;
+		
+	</script>
+	
+<?php endif ?>

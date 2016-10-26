@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <balance_box>
+            <layouts>
+                <left>
+                    <label translate="true">Left</label>
+                    <class>balance-box-layout-left</class>
+                </left>
+                <middle>
+                    <label translate="true">Middle</label>
+                    <class>balance-box-layout-middle</class>
+                </middle>
+                <right>
+                    <label translate="true">Right</label>
+                    <class>balance-box-layout-right</class>
+                </right>
+            </layouts>
+        </balance_box>
+    </default>
+</config>

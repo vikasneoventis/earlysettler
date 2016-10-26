@@ -1,0 +1,20 @@
+nginx:
+  extends:
+    file: ../../common/docker-compose.yml
+    service: nginx-proxy
+  ports:
+    - "8080:8080"
+  volumes:
+    - $WEBSITE_PATH:/var/www
+    - ./config/nginx-proxy/www.earlysettler.com.au.conf:/etc/nginx/conf.d/www.earlysettler.com.au.conf
+varnish:
+  extends:
+    file: ../../common/docker-compose.yml
+    service: varnish
+  ports:
+    - "80:80"
+  volumes:
+    - $WEBSITE_PATH:/var/www
+    - $WEBSITE_PATH/log/magento:/var/www/current/src/var/log
+  links:
+    - nginx

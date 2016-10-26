@@ -1,0 +1,43 @@
+Xtento_ProductExport
+
+-------------
+  CHANGELOG
+-------------
+
+===== 2.0.0 =====
+ * Initial stable M2 release
+
+===== 2.0.1 =====
+ + Added event xtento_productexport_export_after that is dispatched after export
+ * Fixed a bug where cronjobs of other export profiles where removed when saving a profile
+
+===== 2.0.2 =====
+ * Established compatibility with other email transports such as Ebizmarts/Mandrill for debug message mailing/email destinations.
+
+===== 2.0.3 =====
+ * Compatibility with Magento 2.1.0 established
+ * Fixed SFTP source type, Net_SFTP library using namespaced class names now
+
+===== 2.0.4 =====
+ * Cronjobs for profiles which have been deleted are automatically deleted as well
+ * Fixed "Date From" / "Date To" filter in export profile that always set "todays" date when empty
+
+===== 2.0.5 =====
+ * SFTP destination type is now working for Magento 2.0 and Magento 2.1
+
+===== 2.0.6 =====
+ * Fixed issue for media gallery/image export
+ * Fixed date range filter for automatic/manual exports. In some environments, the timezone of the store wasn't used.
+ * Fixed bug for date range export that would include next days object created on 12:00:00AM exactly
+
+===== 2.0.7 =====
+ * Updated composer.json to require XTENTO "XtCore" base module
+
+===== 2.0.8 =====
+ * Fixed error for manual/automatic date range exports
+
+===== 2.0.9 =====
+ * Fixed wrong "View Execution Log Entry" link in "Export History"
+
+===== 2.1.0 =====
+ + Major new feature: Added the ability to export product reviews

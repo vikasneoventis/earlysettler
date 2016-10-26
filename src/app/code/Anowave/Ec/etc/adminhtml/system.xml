@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+	<system>
+		<tab id="anowave" translate="label" sortOrder="1">
+			<label>Anowave Extensions</label>
+		</tab>
+		<section id="ec" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+			<label>Google Tag Manager</label>
+			<tab>anowave</tab>
+			<resource>Anowave_Ec::anowave</resource>
+			<group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General Options</label>
+				<field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="license" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>License</label>
+                    <comment>Anowave\Package\Model\License</comment>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+                <field id="code" translate="label" type="textarea" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Tag Manager Code</label>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+                <field id="code_position" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Snippet position</label>
+                    <comment><![CDATA[Insert Google Tag Manager snippet. It will be inserted before the body closing tag e.g &lt;/body&gt;]]></comment>
+                    <source_model>Anowave\Ec\Model\Position</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+                <field id="account" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Refund Tracking ID</label>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+			</group>
+			<group id="adwords" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>AdWords Conversion Tracking</label>
+				<field id="conversion_id" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Conversion ID</label>
+                </field>
+				<field id="conversion_label" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Conversion Label</label>
+                </field>
+                <field id="conversion_currency" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Conversion currency</label>
+                </field>
+                <field id="conversion_color" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Conversion color</label>
+                </field>
+			</group>
+			<group id="selectors" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Advanced Developer Configuration</label>
+				<field id="cart" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add to Cart selector</label>
+                </field>
+                <field id="cart_delete" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Remove from Cart selector</label>
+                </field>
+                <field id="list" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Impression list selector</label>
+                </field>
+                <field id="click" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Impression click selector</label>
+                </field>
+			</group>
+			<group id="api" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Google Tag Manager API</label>
+				<field id="google_auth" translate="label" type="hidden" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <comment>Anowave\Ec\Model\Comment\Auth</comment>
+                </field>
+                <field id="google_gtm_account_id" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Account ID</label>
+                    <comment>Google Tag Manager Account ID ex.: 19671043.</comment>
+                </field>
+                <field id="google_gtm_container" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Container ID</label>
+                    <comment>Anowave\Ec\Model\Comment</comment>
+                </field>
+                <field id="google_gtm_ua" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Universal Analytics Tracking ID</label>
+                    <comment>ex.: UA-000000-01.</comment>
+                </field>
+			</group>
+		</section>
+	</system>
+</config>

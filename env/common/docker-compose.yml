@@ -1,0 +1,58 @@
+blackfire:
+  container_name: blackfire
+  image: blackfire/blackfire
+  environment:
+    BLACKFIRE_SERVER_ID: $BLACKFIRE_SERVER_ID
+    BLACKFIRE_SERVER_TOKEN: $BLACKFIRE_SERVER_TOKEN
+sftp:
+  container_name: sftp
+  image: registry.docker.balancenet.com.au:5000/library/sftp:6.6-1.0.1
+  ports:
+    - "2222:2222"
+  volumes:
+    - /mnt/web:/var/sftp/web
+  environment:
+    SFTP_USER_PASS: $SFTP_USER_PASS
+    ENV_TYPE: $WEBSITE_ENV_TYPE
+php-fpm:
+  container_name: php-fpm
+  image: registry.docker.balancenet.com.au:5000/library/php-fpm:5.6-2.5.0
+  volumes:
+    - ./config/php-fpm/magento.php.ini:/etc/php.d/zzmagento.php.ini
+    - ./config/php-fpm/ioncube.php.ini:/etc/php.d/00ioncube.php.ini
+  environment:
+    ENV_TYPE: $WEBSITE_ENV_TYPE
+nginx:
+  container_name: nginx
+  image: registry.docker.balancenet.com.au:5000/library/nginx-web:1.8-2.0.0
+  environment:
+    ENV_TYPE: $WEBSITE_ENV_TYPE
+  volumes:
+    - ./config/nginx/magento.conf:/etc/nginx/magento.conf
+nginx-proxy:
+  container_name: nginx-proxy
+  image: registry.docker.balancenet.com.au:5000/library/nginx-proxy:1.8-2.0.0
+  environment:
+    ENV_TYPE: $WEBSITE_ENV_TYPE
+varnish:
+  container_name: varnish
+  image: registry.docker.balancenet.com.au:5000/library/varnish:4.0-2.0.0
+  volumes:
+    - ./config/varnish/earlysettler.com.au.vcl:/etc/varnish/config/custom.vcl
+  environment:
+    ENV_TYPE: $WEBSITE_ENV_TYPE
+logrotate:
+  container_name: logrotate
+  image: tutum/logrotate:latest
+  restart: on-failure:10
+  volumes:
+    - ./config/logrotate/logrotate.conf:/etc/logrotate.conf
+aws-cli:
+  container_name: aws-cli
+  image: registry.docker.balancenet.com.au:5000/library/aws-cli:1.0.0
+  volumes:
+    - ./config/aws:/root/.aws
+  environment:
+    - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY
+    - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_KEY
+    - AWS_DEFAULT_REGION=$AWS_REGION

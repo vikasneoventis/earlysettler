@@ -1,0 +1,809 @@
+<div class="style-guide-container">
+<form action="#">
+<div class="col2-set">
+<div class="col-1">
+    <div class="button-group-type">
+        <h5 class="sg-section-title">Buttons</h5>
+        <ul>
+            <li>
+                <button type="" class="button btn-cart">add to cart</button>
+            </li>
+            <li>
+                <button type="" class="button">standard</button>
+            </li>
+            <li>
+                <button type="" class="button btn-continue">continue shopping</button>
+            </li>
+            <li>
+                <button type="" class="button btn-func">find in store</button>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <button type="" class="button btn-over btn-cart">add to cart</button>
+            </li>
+            <li>
+                <button type="" class="button btn-over">standard</button>
+            </li>
+            <li>
+                <button type="" class="button btn-over btn-continue">continue shopping</button>
+            </li>
+            <li>
+                <button type="" class="button btn-over btn-func">find in store</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="input-option-group-type">
+        <h5 class="sg-section-title">Checkboxes & Radio Buttons</h5>
+        <ul>
+            <li>
+                <input type="checkbox" checked="checked" id="chk_ticked" name="chk_ticked"/>
+                <label for="chk_ticked">Ticked</label>
+            </li>
+            <li>
+                <input type="checkbox" id="chk_noticked" name="chk_noticked"/>
+                <label for="chk_noticked">Not Ticked</label></li>
+            <li>
+                <input type="checkbox" checked="checked" id="chk_ticked_disabled" name="chk_ticked_disabled"
+                       disabled/>
+                <label for="chk_ticked_disabled">Ticked</label></li>
+            <li>
+                <input type="checkbox" id="chk_noticked_disabled" name="chk_noticked_disabled" disabled/>
+                <label for="chk_noticked_disabled">Ticked</label>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <input type="radio" class="radio" id="radio_selected" value="" name="radio_selected"
+                       checked="checked"/>
+                <label for="radio_selected">Selected</label>
+            </li>
+            <li>
+                <input type="radio" class="radio" id="radio_notselected" value="" name="radio_notselected"/>
+                <label for="radio_selected">Not Selected</label>
+            </li>
+            <li>
+                <input type="radio" class="radio" id="radio_selected_disabled" value=""
+                       name="radio_selected_disabled" checked="checked" disabled/>
+                <label for="radio_selected_disabled">Selected, Disabled</label>
+            </li>
+            <li>
+                <input type="radio" class="radio" id="radio_notselected_disabled" value=""
+                       name="radio_notselected_disabled" disabled/>
+                <label for="radio_notselected_disabled">Disabled</label>
+            </li>
+        </ul>
+    </div>
+    <div class="input-field-group-type">
+        <h5 class="sg-section-title">Input Fields</h5>
+        <div class="col2-set fieldset">
+            <div class="col-1">
+                <ul>
+                    <li class="field _required">
+                        <label for="ACG587X" class="label"><span>Dropdown field</span></label>
+
+                        <div class="control">
+                            <select placeholder="" aria-describedby="notice-ACG587X" id="ACG587X" name="country_id" class="select" data-bind="attr: { name: inputName, id: uid, disabled: disabled, 'aria-describedby': noticeId, placeholder: placeholder }, hasFocus: focused, optgroup: options, value: value, optionsCaption: caption, optionsValue: 'value', optionsText: 'label', optionsAfterRender: function(option, item) { if (item &amp;&amp; item.disabled) { ko.applyBindingsToNode(option, {attr: {disabled: true}}, item); } }">
+                                <option value=""></option>
+                                <option value="AU" data-title="Australia">Australia</option>
+                                <option value="delimiter" data-title="──────────">──────────</option>
+                                <option value="AF" data-title="Afghanistan">Afghanistan</option>
+                                <option value="AL" data-title="Albania">Albania</option>
+                                <option value="DZ" data-title="Algeria">Algeria</option>
+                                <option value="AS" data-title="American Samoa">American Samoa</option>
+                                <option value="FO" data-title="Faroe Islands">Faroe Islands</option>
+                            </select>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <ul>
+                    <li class="field _required">
+                        <label for="ACG587X" class="label"><span>Dropdown field</span></label>
+
+                        <div class="control">
+                            <select placeholder="" aria-describedby="notice-ACG587X" id="ACG587X" name="country_id" class="select" data-bind="attr: { name: inputName, id: uid, disabled: disabled, 'aria-describedby': noticeId, placeholder: placeholder }, hasFocus: focused, optgroup: options, value: value, optionsCaption: caption, optionsValue: 'value', optionsText: 'label', optionsAfterRender: function(option, item) { if (item &amp;&amp; item.disabled) { ko.applyBindingsToNode(option, {attr: {disabled: true}}, item); } }">
+                                <option value=""></option>
+                                <option value="AU" data-title="Australia">Australia</option>
+                                <option value="delimiter" data-title="──────────">──────────</option>
+                                <option value="AF" data-title="Afghanistan">Afghanistan</option>
+                                <option value="AL" data-title="Albania">Albania</option>
+                                <option value="DZ" data-title="Algeria">Algeria</option>
+                                <option value="AS" data-title="American Samoa">American Samoa</option>
+                                <option value="FO" data-title="Faroe Islands">Faroe Islands</option>
+                            </select>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col2-set fieldset">
+            <div class="col-1">
+                <ul class="fields">
+                    <li class="field _required">
+                        <label for="email_address" class="label"><span>Text Field</span></label>
+
+                        <div class="control">
+                            <input type="text" placeholder="Search Beacon Lighting" autocapitalize="off"
+                                   autocorrect="off" spellcheck="false" autocomplete="off"
+                                   class="input-text algolia-search-input aa-input" name="q" id="search"
+                                   style="position: relative; vertical-align: top;" dir="auto">
+                        </div>
+                    </li>
+                    <li class="field _required">
+                        <label for="email_address" class="label"><span>Text Field Selected</span></label>
+
+                        <div class="control">
+                            <input type="text" placeholder="Enter your name" autocapitalize="off" autocorrect="off"
+                                   spellcheck="false" autocomplete="off" class="input-text input-over input-focus"/>
+                        </div>
+                    </li>
+                    <li class="field _required">
+                        <label for="email_address" class="label"><span>Email</span></label>
+
+                        <div class="control">
+                            <input type="text" placeholder="Enter your name" autocapitalize="off" autocorrect="off"
+                                   spellcheck="false" autocomplete="off"
+                                   class="input-text required-entry validation-failed validate-email" name="q"
+                                   id="email_address" dir="auto"/>
+
+                            <div id="email_address-error" class="mage-error" generated="true" for="email_address">Please enter a
+                                valid email address (Ex: johndoe@domain.com).
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-2">
+
+                <form method="get" action="http://earlysettler.local/catalogsearch/result/" id="search_mini_form" class="form minisearch">
+                    <div class="field search">
+                        <label data-role="minisearch-label" for="search" class="label">
+                            <span>Search</span>
+                        </label>
+                        <div class="control">
+                            <input type="text" autocomplete="off" aria-autocomplete="both" aria-haspopup="false" role="combobox" maxlength="128" class="input-text" placeholder="Search entire store here..." value="" name="q" id="search">
+                            <div class="search-autocomplete" id="search_autocomplete" style="display: none; position: absolute; width: 250px;"><ul role="listbox"></ul></div>
+                            <div class="nested">
+                                <a data-action="advanced-search" href="http://earlysettler.local/catalogsearch/advanced/" class="action advanced">
+                                    Advanced Search    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="action search" title="Search" type="submit">
+                            <span>Search</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="tab-group-type">
+        <h5 class="sg-section-title">Navigation</h5>
+
+        <div style="display: block; width: 100%; margin: 0px;" class="tab-theme accordion-style resp-easy-accordion" id="tab-product">
+            <ul style="display: none;" class="resp-tabs-list">
+                <li role="tab" aria-controls="tab_item-0" class="resp-tab-item resp-tab-active" id="product.info.description">Description</li>
+                <li role="tab" aria-controls="tab_item-1" class="resp-tab-item" id="additional">Specifications</li>
+                <li role="tab" aria-controls="tab_item-2" class="resp-tab-item" id="reviews">Reviews <span class="counter">3</span></li>
+            </ul>
+
+            <div class="resp-tabs-container">
+
+                <h2 aria-controls="tab_item-0" class="resp-accordion resp-tab-active" role="tab"><span class="resp-arrow"></span>Description</h2>
+                <div style="display: block;" aria-labelledby="tab_item-0" class="resp-tab-content resp-tab-content-active">
+                    <div class="product attribute description">
+                        <div class="value">
+                            <p>Don't let the plain style fool you: the Fiona Fitness Short demands notice on several levels. Comfort, of course. But also a performance-grade wicking fabric that takes everything you can give.</p>
+                            <ul>
+                                <li>Black run shorts <br>- cotton/spandex.</li>
+                                <li>5” inseam.</li>
+                                <li>Machine wash/Line dry.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 aria-controls="tab_item-1" class="resp-accordion" role="tab"><span class="resp-arrow"></span>Specifications</h2>
+                <div style="display: none;" aria-labelledby="tab_item-1" class="resp-tab-content">
+                    <div class="additional-attributes-wrapper table-wrapper">
+                        <table class="data table additional-attributes" id="product-attribute-specs-table">
+                            <caption class="table-caption">More Information</caption>
+                            <tbody>
+                            <tr>
+                                <th class="col label" scope="row">Style</th>
+                                <td class="col data" data-th="Style">Base Layer, Basic</td>
+                            </tr>
+                            <tr>
+                                <th class="col label" scope="row">Material</th>
+                                <td class="col data" data-th="Material">Spandex, Organic Cotton</td>
+                            </tr>
+                            <tr>
+                                <th class="col label" scope="row">Pattern</th>
+                                <td class="col data" data-th="Pattern">Solid</td>
+                            </tr>
+                            <tr>
+                                <th class="col label" scope="row">Climate</th>
+                                <td class="col data" data-th="Climate">Indoor, Mild, Warm, Hot</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-2">
+<div class="message-group-type">
+    <h5 class="sg-section-title">Alert</h5>
+    <div class="messages">
+        <div data-bind="scope: 'messages'">
+            <div data-bind="foreach: { data: cookieMessages, as: 'message' }" class="messages">
+                <div data-ui-id="message-success" class="message-success success message" data-bind="attr: { class: 'message-' + message.type + ' ' + message.type + ' message', 'data-ui-id': 'message-' + message.type }">
+                    <div data-bind="html: message.text">You added Stellar Solar Jacket to your shopping cart.</div>
+                </div>
+            </div>
+            <div data-bind="foreach: { data: messages().messages, as: 'message' }" class="messages"></div>
+        </div>
+        <div data-ui-id="message-error" class="message-error error message" data-bind="attr: { class: 'message-' + message.type + ' ' + message.type + ' message', 'data-ui-id': 'message-' + message.type }">
+            <div data-bind="html: message.text">Invalid login or password.</div>
+        </div>
+    </div>
+</div>
+<div class="typo-group-type">
+    <h5 class="sg-section-title">Typography</h5>
+
+    <div class="breadcrumbs">
+        <ul class="items">
+            <li class="item home">
+                <a href="https://earlysettler.local/" title="Go to Home Page"> Home </a>
+            </li>
+            <li class="item product">
+                <strong>Stellar Solar Jacket</strong>
+            </li>
+        </ul>
+    </div>
+
+    <div class="std">
+        <p>
+            Open Sans Regular -14px/20px <br/>
+            Nunc feugiat magna quis arcu vehicula tincidunt? Aliquam vitae sem nec magna
+        </p>
+
+        <p>
+            id dignissim arcu sagittis in! Integer at dui cursus magna pulvinar convallis eu et magna.
+            Etiam aliquam libero ut ullamcorper sagittis? Pellentesque scelerisque ultrices odio sed
+            consectetur. Praesent elementum nibh eu orci euismod, quis scelerisque risus euismod.
+            Curabitur euismod lacinia neque, eget rutrum nulla porta vel.
+        </p>
+
+        <p>
+            Ut commodo faucibus vestibulum. Donec bibendum ex sed risus pretium ornare! Aliquam
+            tristique sit amet sem ut malesuada. Sed euismod id leo non vehicula.
+        </p>
+    </div>
+
+    <ul class="text-link-type">
+        <li><a href="">Text Link</a></li>
+        <li><a href="" class="hover-link over">Text Link Hover</a></li>
+        <li><a href="" class="active-link">Text Link active</a></li>
+    </ul>
+
+
+    <div class="heading-type">
+        <h1>H1 URW Antiqua Bold 42px - Lt - 25</h1>
+
+        <h2>H2 URW Antiqua Bold 40px - Lt - 25</h2>
+
+        <h3>H3 Open Sans Bold 24px - Lt - 15</h3>
+        <h4>h4 Open Sans Regular 24px</h4>
+        <h5>h5 Open Sans Semi Bold 16px - Lt - 15</h5>
+        <h5>h5 Open Sans Regular 12px - Lt - 15</h5>
+    </div>
+    <div class="heading-content-type">
+        <h1>Content h1 URW Antiqua Bold - 20px</h1>
+
+        <h2>Content h2 URW Antiqua Bold - 16px</h2>
+    </div>
+</div>
+<div class="misc-group-type">
+<h5 class="sg-section-title">Misc</h5>
+
+<ol class="flickity-page-dots">
+    <li class="dot"></li>
+    <li class="dot"></li>
+    <li class="dot is-selected"></li>
+    <li class="dot"></li>
+</ol>
+<div class="rating-group">
+    <div class="rating-box">
+        <span class="rating-number">0</span>
+        <span style="width:0%;" class="rating nobr">0 star</span>
+    </div>
+    <div class="rating-box">
+        <span class="rating-number">2</span>
+        <span style="width:40%;" class="rating nobr over">2 star</span>
+    </div>
+</div>
+
+<div class="swatch-opt" data-role="swatch-options">
+    <div class="swatch-attribute color" attribute-code="color" attribute-id="93">
+        <span class="swatch-attribute-label">Color</span>
+        <span class="swatch-attribute-selected-option"></span>
+        <div class="swatch-attribute-options clearfix">
+            <div class="swatch-option color" option-type="1" option-id="59" option-label="Blue" option-tooltip-thumb="" option-tooltip-value="#1857f7" style="background: #1857f7 no-repeat center; background-size: initial;"></div>
+            <div class="swatch-option color" option-type="1" option-id="67" option-label="Red" option-tooltip-thumb="" option-tooltip-value="#ff0000" style="background: #ff0000 no-repeat center; background-size: initial;"></div>
+            <div class="swatch-option color" option-type="1" option-id="69" option-label="Yellow" option-tooltip-thumb="" option-tooltip-value="#ffd500" style="background: #ffd500 no-repeat center; background-size: initial;"></div>
+        </div>
+    </div>
+    <div class="swatch-attribute size" attribute-code="size" attribute-id="184">
+        <span class="swatch-attribute-label">Size</span>
+        <span class="swatch-attribute-selected-option"></span>
+        <div class="swatch-attribute-options clearfix">
+            <div class="swatch-option text" option-type="0" option-id="180" option-label="S" option-tooltip-thumb="" option-tooltip-value="S">S</div>
+            <div class="swatch-option text" option-type="0" option-id="181" option-label="M" option-tooltip-thumb="" option-tooltip-value="M">M</div>
+            <div class="swatch-option text" option-type="0" option-id="182" option-label="L" option-tooltip-thumb="" option-tooltip-value="L">L</div>
+        </div>
+    </div>
+</div>
+
+<div class="product-social-links case-available">
+    <div class="product-addto-links" data-role="add-to-links">
+        <a href="#" class="action towishlist" data-post="{&quot;action&quot;:&quot;https:\/\/earlysettler.local\/wishlist\/index\/add\/&quot;,&quot;data&quot;:{&quot;product&quot;:&quot;1227&quot;,&quot;uenc&quot;:&quot;aHR0cHM6Ly9lYXJseXNldHRsZXIubG9jYWwvc3RlbGxhci1zb2xhci1qYWNrZXQuaHRtbA,,&quot;}}" data-action="add-to-wishlist">
+            <span>Add to Wish List</span>
+        </a>
+        <a href="#" data-post="{&quot;action&quot;:&quot;https:\/\/earlysettler.local\/catalog\/product_compare\/add\/&quot;,&quot;data&quot;:{&quot;product&quot;:&quot;1227&quot;,&quot;uenc&quot;:&quot;aHR0cHM6Ly9lYXJseXNldHRsZXIubG9jYWwvc3RlbGxhci1zb2xhci1qYWNrZXQuaHRtbA,,&quot;}}" data-role="add-to-links" class="action tocompare">
+            <span>Add to Compare</span>
+        </a>
+    </div>
+    <a href="https://earlysettler.local/sendfriend/product/send/id/1227/" class="action mailto friend"><span>Email</span></a>
+</div>
+
+<div class="socials-group social-links">
+    <ul>
+        <li><a target="_blank" href="https://www.facebook.com/earlysettler" class="icon-facebooksocial_icon"></a></li>
+        <li><a target="_blank" href="http://instagram.com/earlysettler" class="icon-instagramsocial_icon"></a></li>
+        <li><a target="_blank" href="http://www.linkin.com/earlysettler/" class="icon-pintrestsocial_icon"></a></li>
+        <li><a target="_blank" href="http://www.youtube.com/user/earlysettler" class="icon-youtubesocial_icon"></a></li>
+    </ul>
+    <ul>
+        <li><a target="_blank" href="https://www.facebook.com/earlysettler" class="icon-facebooksocial_icon over"></a></li>
+        <li><a target="_blank" href="http://instagram.com/earlysettler" class="icon-instagramsocial_icon over"></a></li>
+        <li><a target="_blank" href="http://www.linkin.com/earlysettler/" class="icon-pintrestsocial_icon over"></a></li>
+        <li><a target="_blank" href="http://www.youtube.com/user/earlysettler" class="icon-youtubesocial_icon over"></a></li>
+    </ul>
+</div>
+
+<div class="toolbar">
+    <div class="modes">
+        <strong id="modes-label" class="modes-label">View as</strong>
+        <strong data-value="grid" class="modes-mode active mode-grid" title="Grid">
+            <span>Grid</span>
+        </strong>
+        <a aria-labelledby="modes-label mode-list" id="mode-list" data-value="list"
+           data-role="mode-switcher" href="#" title="List" class="modes-mode mode-list">
+            <span>List</span>
+        </a>
+    </div>
+    <p id="toolbar-amount" class="toolbar-amount">
+        Items <span class="toolbar-number">1</span>-<span class="toolbar-number">9</span> of <span
+            class="toolbar-number">50</span>
+    </p>
+
+    <div class="pages">
+        <strong id="paging-label" class="label pages-label">Page</strong>
+        <ul aria-labelledby="paging-label" class="items pages-items">
+            <li class="item current">
+                <strong class="page">
+                    <span class="label">You're currently reading page</span>
+                    <span>1</span>
+                </strong>
+            </li>
+            <li class="item">
+                <a class="page" href="https://earlysettler.local/women/tops-women.html?p=2">
+                    <span class="label">Page</span>
+                    <span>2</span>
+                </a>
+            </li>
+            <li class="item">
+                <a class="page" href="https://earlysettler.local/women/tops-women.html?p=3">
+                    <span class="label">Page</span>
+                    <span>3</span>
+                </a>
+            </li>
+            <li class="item">
+                <a class="page" href="https://earlysettler.local/women/tops-women.html?p=4">
+                    <span class="label">Page</span>
+                    <span>4</span>
+                </a>
+            </li>
+            <li class="item">
+                <a class="page" href="https://earlysettler.local/women/tops-women.html?p=5">
+                    <span class="label">Page</span>
+                    <span>5</span>
+                </a>
+            </li>
+            <li class="item pages-item-next">
+                <a title="Next" href="https://earlysettler.local/women/tops-women.html?p=2"
+                   class="action  next">
+                    <span class="label">Page</span>
+                    <span>Next</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="field limiter">
+        <label for="limiter" class="label">
+            <span>Show</span>
+        </label>
+
+        <div class="control">
+            <select class="limiter-options" data-role="limiter" id="limiter">
+                <option selected="selected" value="9">9</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+        <span class="limiter-text">per page</span>
+    </div>
+
+    <div class="toolbar-sorter sorter">
+        <label for="sorter" class="sorter-label">Sort By</label>
+        <select class="sorter-options" data-role="sorter" id="sorter">
+            <option selected="selected" value="position">Position</option>
+            <option value="name">Product Name</option>
+            <option value="price">Price</option>
+        </select>
+        <a data-value="desc" data-role="direction-switcher" class="action sorter-action sort-asc"
+           href="#" title="Set Descending Direction">
+            <span>Set Descending Direction</span>
+        </a>
+    </div>
+</div>
+
+<div class="products wrapper grid products-grid">
+    <ol class="products list items product-items">
+        <li class="item product product-item">
+            <div data-container="product-grid" class="product-item-info">
+                <a tabindex="-1" class="product photo product-item-photo" href="https://earlysettler.local/breathe-easy-tank.html">
+                    <span style="width:240px;" class="product-image-container">
+                        <span style="padding-bottom: 125%;" class="product-image-wrapper">
+                            <img width="240" height="300" alt="Breathe-Easy Tank"
+                                 src="https://earlysettler.local/pub/media/catalog/product/cache/1/small_image/240x300/beff4985b56e3afdbeabfc89641a4582/w/t/wt09-white_main.jpg"
+                                 class="product-image-photo">
+                        </span>
+                    </span>
+                </a>
+
+                <div class="product details product-item-details">
+                    <strong class="product name product-item-name">
+                        <a href="https://earlysettler.local/breathe-easy-tank.html" class="product-item-link">Breathe-Easy Tank</a>
+                    </strong>
+
+                    <div class="product-reviews-summary short">
+                        <div class="rating-summary">
+                            <span class="label"><span>Rating:</span></span>
+
+                            <div title="70%" class="rating-result">
+                                <span style="width:70%"><span>70%</span></span>
+                            </div>
+                        </div>
+                        <div class="reviews-actions">
+                            <a href="https://earlysettler.local/breathe-easy-tank.html#reviews"
+                               class="action view">2&nbsp;<span>Reviews</span></a>
+                        </div>
+                    </div>
+                    <div data-product-id="1819" data-role="priceBox" class="price-box price-final_price">
+                        <span class="price-container price-final_price tax weee">
+                            <span class="price-wrapper " data-price-type="finalPrice"
+                                  data-price-amount="34" id="product-price-1819">
+                                <span class="price">$34.00</span>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="swatch-opt-1819">
+                        <div attribute-id="93" attribute-code="color" class="swatch-attribute color">
+                            <div class="swatch-attribute-options clearfix">
+                                <div style="background: #ef3dff no-repeat center; background-size: initial;"
+                                     option-tooltip-value="#ef3dff" option-tooltip-thumb="" option-label="Purple"
+                                     option-id="66" option-type="1" class="swatch-option color"></div>
+                                <div style="background: #ffffff no-repeat center; background-size: initial;"
+                                     option-tooltip-value="#ffffff" option-tooltip-thumb="" option-label="White"
+                                     option-id="68" option-type="1" class="swatch-option color"></div>
+                                <div style="background: #ffd500 no-repeat center; background-size: initial;"
+                                     option-tooltip-value="#ffd500" option-tooltip-thumb="" option-label="Yellow"
+                                     option-id="69" option-type="1" class="swatch-option color"></div>
+                            </div>
+                        </div>
+                        <div attribute-id="184" attribute-code="size" class="swatch-attribute size">
+                            <div class="swatch-attribute-options clearfix">
+                                <div option-tooltip-value="XS" option-tooltip-thumb="" option-label="XS"
+                                     option-id="179" option-type="0" class="swatch-option text">XS
+                                </div>
+                                <div option-tooltip-value="S" option-tooltip-thumb="" option-label="S"
+                                     option-id="180" option-type="0" class="swatch-option text">S
+                                </div>
+                                <div option-tooltip-value="M" option-tooltip-thumb="" option-label="M"
+                                     option-id="181" option-type="0" class="swatch-option text">M
+                                </div>
+                                <div option-tooltip-value="L" option-tooltip-thumb="" option-label="L"
+                                     option-id="182" option-type="0" class="swatch-option text">L
+                                </div>
+                                <div option-tooltip-value="XL" option-tooltip-thumb="" option-label="XL"
+                                     option-id="183" option-type="0" class="swatch-option text">XL
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-item-inner">
+                        <div class="product actions product-item-actions">
+                            <div class="actions-primary">
+                                <form method="post"
+                                      action="https://earlysettler.local/checkout/cart/add/uenc/aHR0cHM6Ly9lYXJseXNldHRsZXIubG9jYWwvd29tZW4vdG9wcy13b21lbi5odG1s/product/1819/"
+                                      data-role="tocart-form">
+                                    <input type="hidden" value="1819" name="product">
+                                    <input type="hidden"
+                                           value="aHR0cHM6Ly9lYXJseXNldHRsZXIubG9jYWwvY2hlY2tvdXQvY2FydC9hZGQvdWVuYy9hSFIwY0hNNkx5OWxZWEpzZVhObGRIUnNaWEl1Ykc5allXd3ZkMjl0Wlc0dmRHOXdjeTEzYjIxbGJpNW9kRzFzL3Byb2R1Y3QvMTgxOS8,"
+                                           name="uenc">
+                                    <input type="hidden" value="jqwv3jO8Ln1D2Vfv" name="form_key">
+                                    <button class="action tocart primary" title="Add to Cart" type="submit">
+                                        <span>Add to Cart</span>
+                                    </button>
+                                    <input type="text" style="visibility: hidden; position:absolute; left:-1000px"
+                                           aria-invalid="true" aria-required="true" data-validate="{required:true}"
+                                           data-selector="super_attribute[93]" value="" name="super_attribute[93]"
+                                           class="swatch-input super-attribute-select">
+                                    <input type="text" style="visibility: hidden; position:absolute; left:-1000px"
+                                           aria-invalid="true" aria-required="true" data-validate="{required:true}"
+                                           data-selector="super_attribute[184]" value="" name="super_attribute[184]"
+                                           class="swatch-input super-attribute-select">
+                                </form>
+                            </div>
+                            <div class="actions-secondary" data-role="add-to-links">
+                                <a role="button" data-action="add-to-wishlist"
+                                   data-post="{&quot;action&quot;:&quot;https:\/\/earlysettler.local\/wishlist\/index\/add\/&quot;,&quot;data&quot;:{&quot;product&quot;:&quot;1819&quot;,&quot;uenc&quot;:&quot;aHR0cHM6Ly9lYXJseXNldHRsZXIubG9jYWwvd29tZW4vdG9wcy13b21lbi5odG1s&quot;}}"
+                                   aria-label="Add to Wish List" title="Add to Wish List" class="action towishlist"
+                                   href="#">
+                                    <span>Add to Wish List</span>
+                                </a>
+                                <a role="button"
+                                   data-post="{&quot;action&quot;:&quot;https:\/\/earlysettler.local\/catalog\/product_compare\/add\/&quot;,&quot;data&quot;:{&quot;product&quot;:&quot;1819&quot;,&quot;uenc&quot;:&quot;aHR0cHM6Ly9lYXJseXNldHRsZXIubG9jYWwvd29tZW4vdG9wcy13b21lbi5odG1s&quot;}}"
+                                   aria-label="Add to Compare" title="Add to Compare" class="action tocompare" href="#">
+                                    <span>Add to Compare</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="item product product-item">
+            <div data-container="product-grid" class="product-item-info">
+                <a tabindex="-1" class="product photo product-item-photo" href="https://earlysettler.local/desiree-fitness-tee.html">
+                    <span style="width:240px;" class="product-image-container">
+                        <span style="padding-bottom: 125%;" class="product-image-wrapper">
+                            <img width="240" height="300" alt="Desiree Fitness Tee"
+                                 src="https://earlysettler.local/pub/media/catalog/product/cache/1/small_image/240x300/beff4985b56e3afdbeabfc89641a4582/w/s/ws05-black_main.jpg"
+                                 class="product-image-photo">
+                        </span>
+                    </span>
+                </a>
+
+                <div class="product details product-item-details">
+                    <strong class="product name product-item-name">
+                        <a href="https://earlysettler.local/desiree-fitness-tee.html" class="product-item-link">Desiree
+                            Fitness Tee</a>
+                    </strong>
+
+                    <div class="product-reviews-summary short">
+                        <div class="rating-summary">
+                            <span class="label"><span>Rating:</span></span>
+
+                            <div title="73%" class="rating-result">
+                                <span style="width:73%"><span>73%</span></span>
+                            </div>
+                        </div>
+                        <div class="reviews-actions">
+                            <a href="https://earlysettler.local/desiree-fitness-tee.html#reviews"
+                               class="action view">3&nbsp;<span>Reviews</span></a>
+                        </div>
+                    </div>
+                    <div data-product-id="1595" data-role="priceBox" class="price-box price-final_price">
+                        <span class="price-container price-final_price tax weee">
+                            <span class="price-wrapper " data-price-type="finalPrice"
+                                  data-price-amount="24" id="product-price-1595">
+                                <span class="price">$24.00</span>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="swatch-opt-1595">
+                        <div attribute-id="93" attribute-code="color" class="swatch-attribute color">
+                            <div class="swatch-attribute-options clearfix">
+                                <div style="background: #000000 no-repeat center; background-size: initial;"
+                                     option-tooltip-value="#000000" option-tooltip-thumb="" option-label="Black"
+                                     option-id="58" option-type="1" class="swatch-option color"></div>
+                                <div style="background: #eb6703 no-repeat center; background-size: initial;"
+                                     option-tooltip-value="#eb6703" option-tooltip-thumb="" option-label="Orange"
+                                     option-id="65" option-type="1" class="swatch-option color"></div>
+                                <div style="background: #ffd500 no-repeat center; background-size: initial;"
+                                     option-tooltip-value="#ffd500" option-tooltip-thumb="" option-label="Yellow"
+                                     option-id="69" option-type="1" class="swatch-option color"></div>
+                            </div>
+                        </div>
+                        <div attribute-id="184" attribute-code="size" class="swatch-attribute size">
+                            <div class="swatch-attribute-options clearfix">
+                                <div option-tooltip-value="XS" option-tooltip-thumb="" option-label="XS" option-id="179"
+                                     option-type="0" class="swatch-option text">XS
+                                </div>
+                                <div option-tooltip-value="S" option-tooltip-thumb="" option-label="S" option-id="180"
+                                     option-type="0" class="swatch-option text">S
+                                </div>
+                                <div option-tooltip-value="M" option-tooltip-thumb="" option-label="M" option-id="181"
+                                     option-type="0" class="swatch-option text">M
+                                </div>
+                                <div option-tooltip-value="L" option-tooltip-thumb="" option-label="L" option-id="182"
+                                     option-type="0" class="swatch-option text">L
+                                </div>
+                                <div option-tooltip-value="XL" option-tooltip-thumb="" option-label="XL" option-id="183"
+                                     option-type="0" class="swatch-option text">XL
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-item-inner">
+                        <div class="product actions product-item-actions">
+                            <div class="actions-primary">
+                                <form method="post"
+                                      action="https://earlysettler.local/checkout/cart/add/uenc/aHR0cHM6Ly9lYXJseXNldHRsZXIubG9jYWwvd29tZW4vdG9wcy13b21lbi5odG1s/product/1595/"
+                                      data-role="tocart-form">
+                                    <input type="hidden" value="1595" name="product">
+                                    <input type="hidden"
+                                           value="aHR0cHM6Ly9lYXJseXNldHRsZXIubG9jYWwvY2hlY2tvdXQvY2FydC9hZGQvdWVuYy9hSFIwY0hNNkx5OWxZWEpzZVhObGRIUnNaWEl1Ykc5allXd3ZkMjl0Wlc0dmRHOXdjeTEzYjIxbGJpNW9kRzFzL3Byb2R1Y3QvMTU5NS8,"
+                                           name="uenc">
+                                    <input type="hidden" value="jqwv3jO8Ln1D2Vfv" name="form_key">
+                                    <button class="action tocart primary" title="Add to Cart" type="submit">
+                                        <span>Add to Cart</span>
+                                    </button>
+                                    <input type="text" style="visibility: hidden; position:absolute; left:-1000px"
+                                           aria-invalid="true" aria-required="true" data-validate="{required:true}"
+                                           data-selector="super_attribute[93]" value="" name="super_attribute[93]"
+                                           class="swatch-input super-attribute-select">
+                                    <input type="text" style="visibility: hidden; position:absolute; left:-1000px"
+                                           aria-invalid="true" aria-required="true" data-validate="{required:true}"
+                                           data-selector="super_attribute[184]" value="" name="super_attribute[184]"
+                                           class="swatch-input super-attribute-select">
+                                </form>
+                            </div>
+                            <div class="actions-secondary" data-role="add-to-links">
+                                <a role="button" data-action="add-to-wishlist"
+                                   data-post="{&quot;action&quot;:&quot;https:\/\/earlysettler.local\/wishlist\/index\/add\/&quot;,&quot;data&quot;:{&quot;product&quot;:&quot;1595&quot;,&quot;uenc&quot;:&quot;aHR0cHM6Ly9lYXJseXNldHRsZXIubG9jYWwvd29tZW4vdG9wcy13b21lbi5odG1s&quot;}}"
+                                   aria-label="Add to Wish List" title="Add to Wish List" class="action towishlist"
+                                   href="#">
+                                    <span>Add to Wish List</span>
+                                </a>
+                                <a role="button"
+                                   data-post="{&quot;action&quot;:&quot;https:\/\/earlysettler.local\/catalog\/product_compare\/add\/&quot;,&quot;data&quot;:{&quot;product&quot;:&quot;1595&quot;,&quot;uenc&quot;:&quot;aHR0cHM6Ly9lYXJseXNldHRsZXIubG9jYWwvd29tZW4vdG9wcy13b21lbi5odG1s&quot;}}"
+                                   aria-label="Add to Compare" title="Add to Compare" class="action tocompare" href="#">
+                                    <span>Add to Compare</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ol>
+</div>
+<div class="toolbar">
+    <div class="modes">
+        <strong id="modes-label" class="modes-label">View as</strong>
+        <strong data-value="grid" class="modes-mode active mode-grid" title="Grid">
+            <span>Grid</span>
+        </strong>
+        <a aria-labelledby="modes-label mode-list" id="mode-list" data-value="list"
+           data-role="mode-switcher" href="#" title="List" class="modes-mode mode-list">
+            <span>List</span>
+        </a>
+    </div>
+    <p id="toolbar-amount" class="toolbar-amount">
+        Items <span class="toolbar-number">1</span>-<span class="toolbar-number">9</span> of <span
+            class="toolbar-number">50</span>
+    </p>
+
+    <div class="pages">
+        <strong id="paging-label" class="label pages-label">Page</strong>
+        <ul aria-labelledby="paging-label" class="items pages-items">
+            <li class="item current">
+                <strong class="page">
+                    <span class="label">You're currently reading page</span>
+                    <span>1</span>
+                </strong>
+            </li>
+            <li class="item">
+                <a class="page" href="https://earlysettler.local/women/tops-women.html?p=2">
+                    <span class="label">Page</span>
+                    <span>2</span>
+                </a>
+            </li>
+            <li class="item">
+                <a class="page" href="https://earlysettler.local/women/tops-women.html?p=3">
+                    <span class="label">Page</span>
+                    <span>3</span>
+                </a>
+            </li>
+            <li class="item">
+                <a class="page" href="https://earlysettler.local/women/tops-women.html?p=4">
+                    <span class="label">Page</span>
+                    <span>4</span>
+                </a>
+            </li>
+            <li class="item">
+                <a class="page" href="https://earlysettler.local/women/tops-women.html?p=5">
+                    <span class="label">Page</span>
+                    <span>5</span>
+                </a>
+            </li>
+            <li class="item pages-item-next">
+                <a title="Next" href="https://earlysettler.local/women/tops-women.html?p=2"
+                   class="action  next">
+                    <span class="label">Page</span>
+                    <span>Next</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="field limiter">
+        <label for="limiter" class="label">
+            <span>Show</span>
+        </label>
+
+        <div class="control">
+            <select class="limiter-options" data-role="limiter" id="limiter">
+                <option selected="selected" value="9">9</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+        <span class="limiter-text">per page</span>
+    </div>
+
+    <div class="toolbar-sorter sorter">
+        <label for="sorter" class="sorter-label">Sort By</label>
+        <select class="sorter-options" data-role="sorter" id="sorter">
+            <option selected="selected" value="position">Position</option>
+            <option value="name">Product Name</option>
+            <option value="price">Price</option>
+        </select>
+        <a data-value="desc" data-role="direction-switcher" class="action sorter-action sort-asc"
+           href="#" title="Set Descending Direction">
+            <span>Set Descending Direction</span>
+        </a>
+    </div>
+</div>
+
+<div class="dinkus-group">
+    <ul>
+        <li>
+            <div class="amasty-label-container" id="amasty-label-container-1-1468" style="width: 113.26px; line-height: normal; position: absolute; z-index: 995; top: 0px; left: 0px;">
+                <div class="amasty-label-text" style="color: blue; padding: 0px 3px; position: absolute; text-align: center; white-space: nowrap; width: 100%; line-height: 86px;"></div>
+                <img class="amasty-label-image" id="amasty-label-image-1-1468" src="pub/media/amasty/amlabel/sale-icon.png" style="opacity: 1 ! important; width: 100%;" title="" alt="">
+            </div>
+        </li>
+        <li><span class="dinkus">package deal</span></li>
+        <li><span class="dinkus">exclusive</span></li>
+        <li><span class="dinkus">limited edition</span></li>
+        <li><span class="dinkus">last chance</span></li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+

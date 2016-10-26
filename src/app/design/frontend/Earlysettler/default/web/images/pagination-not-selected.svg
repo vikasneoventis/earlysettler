@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="11.5" height="12" viewBox="0 0 11.5 12">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #999;
+        stroke-width: 1px;
+      }
+    </style>
+  </defs>
+  <ellipse id="Ellipse_1_copy" data-name="Ellipse 1 copy" class="cls-1" cx="5.75" cy="6" rx="5.25" ry="5.5"/>
+</svg>

@@ -1,0 +1,26 @@
+<script type="text/javascript">
+
+	var data = <?php echo $this->getCheckoutPush() ?>;
+	
+	/* Set ecomm_pagetype */
+	window.google_tag_params.ecomm_pagetype = 'cart';
+
+	/**
+	 * Track checkout step
+	 */
+	AEC.checkoutStep = function(previous, current, currentCode)
+	{
+		 data.ecommerce.checkout.actionField.step = 1 + current;
+
+		 dataLayer.push(data);
+	};
+
+	/**
+	 * Fire first step
+	 */	
+	EC.push(function(dataLayer)
+	{
+		dataLayer.push(data);
+	});
+
+</script>

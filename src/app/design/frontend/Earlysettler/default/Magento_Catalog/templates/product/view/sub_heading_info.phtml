@@ -1,0 +1,11 @@
+<?php if($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getSubHeading(), 'sub_heading')) : ?>
+<div class="sub-heading-info">
+    <?php
+    echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getSubHeading(), 'sub_heading')
+    /*$attribute = $this->getProduct()->getResource()->getAttribute('sub_heading');
+    if ($attribute) {
+        $color_value = $attribute ->getFrontend()->getValue($this->getProduct()
+     );*/
+    ?>
+</div>
+<?php endif; ?>

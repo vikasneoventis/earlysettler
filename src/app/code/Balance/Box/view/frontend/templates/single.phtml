@@ -1,0 +1,61 @@
+<?php
+
+/**
+ *
+ * Default Box template
+ *
+ * @package   Balance_Box
+ * @author    Balance Internet Team  <info@balanceinternet.com.au>
+ * @copyright Copyright (c) 2016, Balance Internet  (http://www.balanceinternet.com.au/)
+ *
+ * @var $block \Balance\Box\Block\Group
+ *
+ */
+
+$box = $block->getBox();
+if (!$box) return;
+
+?>
+<div id="js__balance-box-<?php echo $box->getIdentifier(); ?>" class="balance-box balance-box-default balance-box-<?php echo $box->getIdentifier(); ?> <?php echo $box->getLayoutClass(); ?> <?php echo $block->getCssClass(); ?>">
+
+    <div class="balance-box-container">
+        <?php if ($box->getHeading()) : ?>
+            <h2 class="balance-box-heading">
+                <?php echo $block->escapeHtml($box->getHeading()); ?>
+            </h2>
+        <?php endif; ?>
+
+        <?php if ($box->getContent()) : ?>
+            <div class="balance-box-content std">
+                <?php echo $box->getContent(); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($box->getLink()) : ?>
+            <a href="<?php echo $box->getLink(); ?>" class="button balance-box-button">
+                <span><span>
+                    <?php echo $block->escapeHtml($box->getButtonText()); ?>
+                </span></span>
+            </a>
+        <?php endif; ?>
+    </div>
+
+    <?php if ($box->getMobileImageUrl() || $box->getDesktopImageUrl()) : ?>
+        <img alt="<?php echo $block->escapeHtml($box->getAltText()); ?>" data-desktop-image="<?php echo $box->getDesktopImageUrl(); ?>" data-mobile-image="<?php echo $box->getMobileImageUrl(); ?>" class="balance-box-image" id="js__balance-box-img-<?php echo $box->getIdentifier(); ?>">
+    <?php endif; ?>
+
+</div>
+
+<script>
+require([
+    'jquery',
+    'balance/box'
+], function ($) {
+
+    var options = {};
+    var $image  = $('#js__balance-box-img-<?php echo $box->getIdentifier(); ?>');
+
+    $.balance.box(options, $image);
+
+});
+</script>

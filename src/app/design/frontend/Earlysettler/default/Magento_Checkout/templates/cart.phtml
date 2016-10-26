@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @var $block \Magento\Checkout\Block\Cart
+ */
+
+if ($block->getItemsCount()) {
+    echo $block->getChildHtml('with-items');
+} else {
+    echo $block->getChildHtml('no-items'); ?>
+    <?php if($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('empty_cart_promotion')->toHtml()) : ?>
+    <div class="empty_cart_promotion">
+    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('empty_cart_promotion')->toHtml(); ?>
+    </div>
+    <?php endif;?>
+<?php } ?>

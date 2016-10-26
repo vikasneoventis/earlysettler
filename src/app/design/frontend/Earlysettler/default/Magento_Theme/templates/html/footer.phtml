@@ -1,0 +1,70 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ * athor TAM DOAN TRONG
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<div class="footer-wrap">
+    <div class="footer content">
+        <div class="footer-top">
+            <div class="footer-newsletter">
+                <div class="block join-the-home-club">
+                    <?php if($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('join-the-home-club')->toHtml()) : ?>
+                        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('join-the-home-club')->toHtml(); ?>
+                    <?php endif; ?>
+                </div>
+                <?php if($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('subscribe')->toHtml()) : ?>
+                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('subscribe')->toHtml(); ?>
+                <?php endif; ?>
+            </div>
+            <?php if($block->getChildHtml('home_instagram')) : ?>
+                <div class="home-instagram">
+                    <?php echo $block->getChildHtml('home_instagram'); ?>
+                </div><!-- END FOOTER HOME INSTAGRAM-->
+            <?php endif; ?>
+        </div><!-- END FOOTER top-->
+
+        <div class="footer-content">
+            <div class="footer-column logo-footer">
+                <a class="logo" href="<?php echo $block->getUrl(''); ?>"></a>
+            </div>
+
+            <?php if($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_1')->toHtml()) : ?>
+            <div class="footer-column footer_links_1">
+                <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_1')->toHtml(); ?>
+            </div>
+            <?php endif; ?>
+
+            <?php if($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_2')->toHtml()) : ?>
+            <div class="footer-column footer_links_2">
+                <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_2')->toHtml(); ?>
+            </div>
+            <?php endif; ?>
+
+            <?php if($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_3')->toHtml()) : ?>
+            <div class="footer-column footer_links_3">
+                <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_3')->toHtml(); ?>
+            </div>
+            <?php endif; ?>
+
+            <?php if($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_4')->toHtml()) : ?>
+                <div class="footer-column footer_links_4">
+                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_4')->toHtml(); ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_social')->toHtml()) : ?>
+            <div class="footer-column footer_links_social">
+                <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_social')->toHtml(); ?>
+            </div>
+            <?php endif; ?>
+        </div><!-- END FOOTER CENTER-->
+        <div class="footer-bottom">
+            <?php /* @escapeNotVerified */ echo $block->getCopyright() ?>
+        </div><!-- END FOOTER bottom-->
+    </div>
+</div>

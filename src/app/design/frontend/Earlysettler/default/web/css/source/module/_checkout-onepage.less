@@ -1,0 +1,209 @@
+.checkout-index-index {
+    .opc-progress-bar {
+        margin: 0 0 30px;
+        .opc-progress-bar-item {
+            &:before {
+                top: 16px;
+                height: 6px;
+                border-radius: 0;
+            }
+            > span {
+                color: #222;
+                text-transform: uppercase;
+                font-size: 14px;
+                &:before {
+                    height: 36px;
+                    width: 36px;
+                    margin-left: -18px;
+                }
+                &:after {
+                    content: counter(i);
+                    font-family: inherit;
+                    font-size: 14px;
+                    line-height: 26px;
+                    top: 5px;
+                }
+            }
+            &._active {
+                &:before {
+                    background: #222;
+                }
+                > span:before {
+                    background: #222;
+                }
+            }
+        }
+    }
+
+    .opc-wrapper {
+        padding-right: 90px;
+        .step-title {
+            border-bottom: 1px solid #cfcfcf;
+            font-size: 36px;
+            font-family: 'URWAntiquaBol';
+            text-transform: lowercase;
+        }
+        .form-shipping-address {
+            width: 100%;
+            max-width: 100%;
+            #shipping-new-address-form {
+                margin: 0 -2%;
+                > .field {
+                    float: left;
+                    width: 46%;
+                    padding: 0 2%;
+                }
+            }
+        }
+        form {
+            .label {
+                text-transform: uppercase;
+            }
+            .note {
+                color: #999;
+                font-size: 12px !important;
+            }
+            input.input-text {
+                max-width: 353px;
+                border-radius: 43px;
+                height: 43px;
+                border: 1px solid #cfcfcf;
+                color: #999;
+                padding: 0 20px;
+            }
+            .field .control._with-tooltip {
+                position: relative;
+                max-width: 353px;
+                input {
+                    width: 100%;
+                }
+                .field-tooltip {
+                    right: 10px;
+                    top: 9px;
+                    .field-tooltip-action:before {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+        .form-login {
+            padding: 0;
+            border: none;
+            margin-bottom: 0;
+            .field.required {
+                margin-bottom: 0;
+            }
+        }
+        .form-shipping-address {
+            width: 100%;
+            max-width: 100%;
+            select {
+                display: block;
+            }
+        }
+        .checkout-shipping-method {
+            display: inline-block;
+            width: 100%;
+        }
+    }
+
+    .opc-sidebar {
+        margin-top: 0;
+    }
+
+    .opc-block-summary {
+        border: 1px solid #cfcfcf;
+        border-radius: 5px;
+        background: none;
+        padding: 22px 30px;
+        > .title {
+            font-size: 24px;
+            font-weight: bold;
+            border-bottom: 1px solid #cfcfcf;
+        }
+        .items-in-cart {
+            > .title {
+                border-bottom: 1px solid #cfcfcf;
+                padding: 15px 0px 15px 0;
+                &:after {
+                    font-size: 10px;
+                    right: 10px;
+                    top: 15px;
+                }
+                strong {
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    letter-spacing: 2px;
+                }
+            }
+        }
+        .minicart-items .product-item {
+            &:not(:first-child) {
+                border-top: 1px solid #cfcfcf;
+            }
+            .product-item-details {
+                padding-left: 110px;
+                .product-item-inner {
+                    display: inline-block;
+                }
+                .product-item-name-block {
+                    display: inline-block;
+                    width: 70%;
+                    strong {
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        font-weight: 600;
+                    }
+                }
+                .subtotal {
+                    display: inline-block;
+                    float: right;
+                    width: 25%;
+                    span {
+                        margin: 0;
+                    }
+                    .price {
+                        font-size: 13px;
+                    }
+                }
+                .product.options {
+                    display: inline-block;
+                    width: 100%;
+                    span.toggle {
+                        display: none;
+                    }
+                    .content {
+                        display: block !important;
+                        .item-options {
+                            margin-bottom: 10px;
+                            margin-top: 5px;
+                        }
+                        .label {
+                            font-weight: normal;
+                            font-size: 12px;
+                            color: #999999;
+                            display: inline-block;
+                            float: left;
+                            margin-bottom: 0;
+                            &:after {
+                                content: ":";
+                                margin-right: 5px;
+                            }
+                        }
+                        .values {
+                            font-size: 12px;
+                            color: #999;
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+                .details-qty {
+                    margin-top: 0;
+                    font-size: 13px;
+                }
+            }
+        }
+
+    }
+}

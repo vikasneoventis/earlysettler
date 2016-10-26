@@ -1,0 +1,41 @@
+& when (@media-common = true) {
+    .block.newsletter {
+        form.subscribe {
+            .control {
+                &:before {
+                    display: none;
+                }
+            }
+            input {
+                color: @color-white;
+                background: @color-orange-red7;
+                border: 1px solid @color-white;
+                border-top-right-radius: 0;
+                height: 47px;
+                border-bottom-right-radius: 0;
+                padding-left: 25px;
+                &::-moz-placeholder {
+                    .lib-css(opacity,1);
+                    color: @color-white;
+                }
+
+                &::-webkit-input-placeholder {
+                    .lib-css(opacity,1);
+                    color: @color-white;
+                }
+
+                &:-ms-input-placeholder {
+                    .lib-css(opacity,1);
+                    color: @color-white;
+                }
+            }
+        }
+        .action.primary {
+            &.subscribe {
+                background: @color-white;
+                color: @color-orange-red7;
+                padding: 16px 15px 15px;
+            }
+        }
+    }
+}

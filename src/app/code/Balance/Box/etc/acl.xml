@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::content">
+                    <resource id="Balance_Box::box_content" title="Blog" sortOrder="40" >
+                        <resource id="Balance_Box::box" title="Box" sortOrder="50">
+                            <resource id="Balance_Box::box_save" title="Save Box" sortOrder="10" />
+                            <resource id="Balance_Box::box_delete" title="Delete Box" sortOrder="20" />
+                        </resource>
+                        <resource id="Balance_Box::group" title="Group" sortOrder="60">
+                            <resource id="Balance_Box::group_save" title="Save Group" sortOrder="10" />
+                            <resource id="Balance_Box::group_delete" title="Delete Group" sortOrder="20" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

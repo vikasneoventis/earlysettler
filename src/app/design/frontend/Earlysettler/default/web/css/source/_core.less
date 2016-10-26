@@ -1,0 +1,145 @@
+//
+// Magento Enterprise Edition
+//
+// NOTICE OF LICENSE
+//
+// This source file is subject to the Magento Enterprise Edition End User License Agreement
+// that is bundled with this package in the file LICENSE_EE.txt.
+// It is also available through the world-wide-web at this URL:
+// http://www.magento.com/license/enterprise-edition
+// If you did not receive a copy of the license and are unable to
+// obtain it through the world-wide-web, please send an email
+// to license@magento.com so we can send you a copy immediately.
+//
+// DISCLAIMER
+//
+// Do not edit or add to this file if you wish to upgrade Magento to newer
+// versions in the future. If you wish to customize Magento for your
+// needs please refer to http://www.magento.com for more information.
+//
+// @category    design
+// @package     rwd_default
+// @copyright Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+// @license http://www.magento.com/license/enterprise-edition
+//
+
+// ==============================================
+// Core Application
+// ==============================================
+
+// ----------------------------------------------
+// Browser Resets
+
+//@import "vendor/_normalize";
+//@import "core/_reset";
+
+// ----------------------------------------------
+// icon font;
+
+@import "vendor/_fontello";
+@import "vendor/_font-awesome";
+@import "vendor/_elegant-icons";
+
+// ----------------------------------------------
+// Core
+@import "core/_fonts";     /* include font asset*/
+@import "core/_common";
+
+//@import 'core/_variables';
+@import (reference) '_extends';
+@import 'core/_typography';
+@import 'core/_layout';
+@import 'core/_tables';
+@import 'core/_messages';
+@import 'core/_navigation';
+@import 'core/_tooltips';
+@import 'core/_loaders';
+@import 'core/_forms';
+@import 'core/_icons';
+@import 'core/_buttons';
+@import 'core/_sections';
+@import 'core/_pages'; // Theme pager
+@import 'core/_actions-toolbar';
+@import 'core/_breadcrumbs';
+@import 'core/_popups';
+@import 'core/_price';
+@import 'core/_accordion';
+@import 'core/_toolbar';
+
+// ----------------------------------------------
+// Vendor
+
+// @import "vendor/abc";
+@import "vendor/_nice-select";
+//@import "vendor/_bootstrap";
+//@import "vendor/_fancybox";
+@import "vendor/_flickity";
+//@import "vendor/_cloud-zoom";
+@import "vendor/_owl.carousel.less";
+@import "vendor/_gallery";
+@import "vendor/_swatches";
+
+// ----------------------------------------------
+// Custom Core
+
+//@import "custom/_common";
+//@import "custom/_form";
+
+// ----------------------------------------------
+// Layout
+
+//@import "layout/_global";
+//@import "layout/_header";
+//@import "layout/_header-nav";
+//@import "layout/_header-search";
+//@import "layout/_header-account";
+//@import "layout/_header-cart";
+//@import "layout/_footer";
+
+// ----------------------------------------------
+// Modules
+
+// The sort order here is important for two reasons:
+//  1. The compiled CSS needs to be logically ordered/grouped (NOT alphabetically ordered)
+//  2. Selectors of equal weight get applied based on which appears last in the stylesheet,
+//     so we should try not to change this order once it is in place
+
+@import "module/_product-list";
+@import "module/_catalog-product";
+//@import "module/_catalog-msrp";
+//@import "module/_catalog-compare";
+@import "module/_checkout-cart";
+@import "module/_checkout-onepage";
+//@import "module/_checkout-success";
+//@import "module/_configurableswatches";
+@import "module/_customer";
+//@import "module/_contacts";
+//@import "module/_paypal";
+//@import "module/_review";
+//@import "module/_slideshow";
+//@import "module/_wishlist";
+//@import "module/_checkout-cart-minicart";
+//@import "module/_search";
+//@import "module/_account-reviews";
+//@import "module/_cms";
+//@import "module/_pricing_conditions";
+//@import "module/_cookies";
+//@import "module/_tags";
+//@import "module/_captcha";
+//@import "module/_account-orders";
+//@import "module/_recurring-profiles";
+//@import "module/_billing-agreements";
+//@import "module/_popular-terms";
+//@import "module/_widget";
+//@import "module/_checkout-multi-address";
+
+@import "module/_newsletter";
+@import "module/_styleguide";
+@import "module/_megamenu";
+@import "module/_footer";
+@import "module/_header";
+@import "module/_home";
+
+// ----------------------------------------------
+// Override
+//@import "override/plugin";

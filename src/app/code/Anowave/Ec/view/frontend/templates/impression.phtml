@@ -1,0 +1,15 @@
+<?php if (false !== $data = $this->getImpressionPush()): ?>
+
+	<script type="text/javascript">
+
+		window.google_tag_params.ecomm_pagetype = 'category';
+		window.google_tag_params.ecomm_category = '<?php echo $block->escape($this->getImpressionCategory()->getName()) ?>';
+	
+		EC.push(function(dataLayer)
+		{
+			dataLayer.push(<?php echo $data ?>);
+		});
+		
+	</script>
+	
+<?php endif ?>

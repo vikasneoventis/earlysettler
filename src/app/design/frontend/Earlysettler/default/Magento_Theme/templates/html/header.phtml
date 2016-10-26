@@ -1,0 +1,83 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header $block
+ */
+
+?>
+<header class="page-header">
+    <div class="header-container">
+        <div class="header-top">
+            <div class="header content">
+                <div class="header-top-left">
+                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_customer_service')->toHtml(); ?>
+                </div>
+                <div class="header-top-right">
+                    <!-- ACCOUNT -->
+                    <div class="top-link top-account">
+                        <a href="<?php echo $block->getUrl('customer/account'); ?>"><?php echo __('Account');?></a>
+                    </div>
+                    <!-- WISHLIST -->
+                    <div class="top-link top-wishlist">
+                        <a href="<?php echo $block->getUrl('wishlist') ?>"><?php echo __('Wishlist');?></a>
+                    </div>
+                    <!-- MINI CART -->
+                    <div class="top-link top-minicart">
+                        <?php echo $block->getChildHtml('cart-header'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-middle">
+            <div class="header content">
+                <div class="header-middle-left">
+                    <div class="store-locator-header">
+                        <a href="<?php echo $block->getUrl('storelocator'); ?>" title="<?php echo __('Store Locations');?>"><?php echo __('Store Locations');?></a>
+                    </div>
+                </div>
+                <div class="header-middle-center">
+                    <div class="logo-header">
+                        <?php echo $block->getChildHtml('logo-header'); ?>
+                    </div>
+                </div>
+                <div class="header-middle-right">
+                    <div class="searchbox-header">
+                        <?php echo $block->getChildHtml('search-header'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="header content">
+                <?php if ($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_upper_nav')->toHtml()) : ?>
+                    <div class="header_upper_nav">
+                        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_upper_nav')->toHtml(); ?>
+                    </div>
+                <?php endif; ?>
+                <?php echo $block->getChildHtml('navigation-header'); ?>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="navigation-mobile-wrap">
+    <ul class="menu-mobile-title">
+        <li class="title active nav-title-mobile" data-content="nav-tab-mobile"><?php echo __('Menu');?></li>
+        <li class="title" data-content="mobile-account-wap"><?php echo __('Account');?></li>
+    </ul>
+    <div class="menu-mobile-tab-content nav-tab-mobile">
+        <?php echo $block->getChildHtml('navigation-header'); ?>
+    </div>
+    <div class="menu-mobile-tab-content mobile-account-wap">
+        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_customer_service')->toHtml(); ?>
+        <div class="top-link top-account">
+            <a href="<?php echo $block->getUrl('customer/account'); ?>"><?php echo __('Account');?></a>
+        </div>
+    </div>
+</div>

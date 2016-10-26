@@ -1,0 +1,467 @@
+<script type="text/javascript">
+
+	/** 
+	* Magento 2 Google Tag Manager Enhanced Ecommerce Tracking 
+	*
+	* @author Anowave
+	* @see http://www.anowave.com/marketplace/magento-2-extensions/magento-2-google-tag-manager-enhanced-ecommerce-ua-tracking/
+	* @copyright 2016 Anowave
+	*/
+
+	window.dataLayer = window.dataLayer || [], collection = [], AEC = {};
+
+	/**
+	 * Timing contats
+	 */
+	AEC.Const = 
+	{
+		TIMING_CATEGORY_ADD_TO_CART:		'Add To Cart Time',
+		TIMING_CATEGORY_REMOVE_FROM_CART:	'Remove From Cart Time',
+		TIMING_CATEGORY_PRODUCT_CLICK:		'Product Detail Click Time',
+		TIMING_CATEGORY_CHECKOUT:			'Checkout Time',
+		TIMING_CATEGORY_CHECKOUT_STEP:		'Checkout Step Time',
+		URL:								''
+	};
+
+	/**
+	 * Track "Add to cart" from detail page
+	 * 
+	 * @param (domelement) context
+	 * @param (object) dataLayer
+	 * @return boolean
+	 */
+	AEC.ajax = function(context,dataLayer)
+	{
+		var element = jQuery(context), qty = jQuery(':radio[name=qty]:checked, [name=qty]').eq(0).val(), variant = [];
+	
+		if (!AEC.gtm())
+		{
+			/**
+			 * Invoke original click event(s)
+			 */
+			if (element.data('click'))
+			{
+				/**
+				 * Track time 
+				 */
+				AEC.Time.track(dataLayer, AEC.Const.TIMING_CATEGORY_ADD_TO_CART, element.data('name'), element.data('category'));
+				
+				eval(element.data('click'));
+			}
+			
+			return true;
+		}
+
+		if(element.data('configurable'))
+		{
+			var attributes = jQuery('[name^="super_attribute"]'), variants = [];
+
+			/**
+			 * Load super attsibutes
+			 */
+			var SUPER = <?php echo $this->getHelper()->getSuper() ?>;
+
+			jQuery.each(attributes, function(index, attribute)
+			{
+				if (jQuery(attribute).is('select'))
+				{
+					var name = jQuery(attribute).attr('name'), id = name.substring(name.indexOf('[') + 1, name.lastIndexOf(']'));
+
+					var option = jQuery(attribute).find('option:selected');
+
+					if (0 < parseInt(option.val()))
+					{
+						variants.push(
+						{
+							id: 	id,
+							text: 	option.text()
+						});
+					}
+				}
+			});
+
+			/**
+			 * Colour Swatch support
+			 */
+			if (!variants.length)
+			{
+				jQuery.each(SUPER, function(index, attribute)
+				{
+					var swatch = jQuery('div[attribute-code="' + attribute.code + '"]');
+
+					if (swatch.length)
+					{
+						var variant = 
+						{
+							id: 	attribute.id,
+							text:	''
+						};
+						
+						var select = swatch.find('select');
+
+						if (select.length)
+						{
+							var option = swatch.find('select').find(':selected');
+
+							if (option.length)
+							{
+								variant.text = option.text();
+							}
+						}
+						else 
+						{
+							var span = swatch.find('span.swatch-attribute-selected-option');
+
+							if (span.length)
+							{
+								variant.text = span.text();
+							}
+						}
+
+						variants.push(variant);
+					}
+				});
+			}
+			
+			if (true)
+			{
+				for (i = 0, l = variants.length; i < l; i++)
+				{
+					for (a = 0, b = SUPER.length; a < b; a++)
+					{
+						if (SUPER[a].id == variants[i].id)
+						{
+							variant.push(
+							[
+								SUPER[a].label,
+								variants[i].text
+							].join(':'));
+						}
+					}
+				}
+			}
+
+			if (!variant.length)
+			{
+				/**
+				 * Invoke original click event(s)
+				 */
+				if (element.data('click'))
+				{
+					/**
+					 * Track time 
+					 */
+					AEC.Time.track(dataLayer, AEC.Const.TIMING_CATEGORY_ADD_TO_CART, element.data('name'), element.data('category'));
+					
+					eval(element.data('click'));
+				}
+				
+				return true;
+			}
+		}
+
+		if (element.data('grouped'))
+		{
+			for (u = 0, y = window.G.length; u < y; u++)
+			{
+				var qty = Math.abs(jQuery('[name="super_group[' + window.G[u].id + ']"]').val());
+
+				if (qty)
+				{
+					collection.push(
+					{
+						'name': 		window.G[u].name,
+						'id': 		    window.G[u].sku,
+						'price': 		window.G[u].price,
+						'category': 	window.G[u].category,
+						'brand':		window.G[u].brand,
+						'quantity': 	qty
+					});
+				}
+			}
+		}
+		else
+		{
+			collection.push(
+			{
+				'name': 		element.data('name'),
+				'id': 		    element.data('id'),
+				'price': 		element.data('price'),
+				'category': 	element.data('category'),
+				'brand':		element.data('brand'),
+				'variant':		variant.join('-'),
+				'quantity': 	qty
+			});
+		}
+
+		var data = 
+		{
+			'event': 'addToCart',
+			'eventLabel': element.data('name'),
+			'ecommerce': 
+			{
+				'currencyCode': '',
+				'add': 
+				{
+					'products': collection
+				}
+			}
+		};
+
+		/**
+		 * Track event
+		 */
+		dataLayer.push(data);
+
+		/**
+		 * Track time 
+		 */
+		AEC.Time.track(dataLayer, AEC.Const.TIMING_CATEGORY_ADD_TO_CART, element.data('name'), element.data('category'));
+		
+		/**
+		 * Invoke original click event(s)
+		 */
+		if (element.data('click'))
+		{
+			eval(element.data('click'));
+		}
+
+		return true;
+	}
+
+	/**
+	 * Track "Remove From Cart" event
+	 *
+	 * @param (domelement) context
+	 * @param (object) dataLayer
+	 * @return boolean
+	 */
+	AEC.remove = function(context, dataLayer)
+	{
+		var element = jQuery(context);
+
+		if (!AEC.gtm())
+		{
+			/**
+			 * Track time 
+			 */
+			AEC.Time.track(dataLayer, AEC.Const.TIMING_CATEGORY_REMOVE_FROM_CART, element.data('name'), element.data('category'));
+			
+			return true;
+		}
+
+		var data = 
+		{
+			'event': 'removeFromCart',
+			'eventLabel': element.data('name'),
+			'ecommerce': 
+			{
+				'remove': 
+				{   
+					'products': 
+					[
+						{ 
+							'name': 		element.data('name'),
+							'id': 			element.data('id'),
+							'price': 		element.data('price'),
+							'category': 	element.data('category'),
+							'brand':		element.data('brand'),
+							'quantity': 	element.data('quantity')
+						}
+					]
+				}
+			}
+		};
+
+		
+		if (confirm('Are you sure you would like to remove this item from the shopping cart?'))
+		{
+			/**
+			 * Track event
+			 */
+			dataLayer.push(data);
+
+			/**
+			 * Track time 
+			 */
+			AEC.Time.track(dataLayer, AEC.Const.TIMING_CATEGORY_REMOVE_FROM_CART, element.data('name'));
+
+			return true;	
+		}
+		
+		return false;
+	}
+
+	/**
+	 * Track "Product click" event
+	 *
+	 * @param (domelement) context
+	 * @param (object) dataLayer
+	 * @return boolean
+	 */
+	AEC.click = function(context,dataLayer)
+	{
+		var element = jQuery(context);
+
+		if (!AEC.gtm())
+		{
+			/**
+			 * Track time 
+			 */
+			AEC.Time.track(dataLayer, AEC.Const.TIMING_CATEGORY_PRODUCT_CLICK, element.data('name'), element.data('category'));
+			
+			return true;
+		}
+
+		var data = 
+		{
+			'event': 'productClick',
+			'eventLabel': element.data('name'),
+			'ecommerce': 
+			{
+				'click': 
+				{
+					'actionField': 
+					{
+						'list': element.data('list')
+					},
+					'products': 
+					[
+						{
+							'name': 		element.data('name'),
+							'id': 			element.data('id'),
+							'price': 		element.data('price'),
+							'category': 	element.data('category'),
+							'brand':		element.data('brand'),
+							'quantity': 	element.data('quantity')
+						}
+					]
+				}
+			},
+			'eventCallback': function() 
+			{
+				if (element.data('click'))
+				{
+					eval(element.data('click'));
+				}
+				else if (element.is('a'))
+				{
+					document.location = element.attr('href');
+				}
+				else if (element.is('img') && element.parent().is('a'))
+				{
+					document.location = element.parent().attr('href');
+				}
+				else 
+				{
+					return true;
+				}
+	     	}		
+		};
+
+		/**
+		 * Push data
+		 */
+		dataLayer.push(data);
+
+		/**
+		 * Track time 
+		 */
+		AEC.Time.track(dataLayer, AEC.Const.TIMING_CATEGORY_PRODUCT_CLICK, element.data('name'), element.data('category'));
+
+		if (element.data('click'))
+		{
+			eval(element.data('click'));
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Check if GTM snippet is available on page.
+	 *
+	 * @param void
+	 * @return boolean
+	 */
+	AEC.gtm = function()
+	{
+		if ("undefined" === typeof google_tag_manager)
+		{
+			/**
+			 * Log error to console
+			 */
+			log('Unable to detect Google Tag Manager. Please verify if GTM install snippet is available.');
+			
+			return false;
+		}
+
+		return true;
+	}
+
+
+	/**
+	 * User timing
+	 */
+
+	AEC.Time = (function()
+	{
+		var T = 
+		{
+			event: 			'trackTime',
+			timingCategory:	'',
+			timingVar:		'',
+			timingValue:	-1,
+			timingLabel:	''
+		};
+
+		var time = new Date().getTime();
+		
+		return {
+			track: function(dataLayer, category, variable, label)
+			{
+				T.timingValue = (new Date().getTime()) - time;
+				
+				if (category)
+				{
+					T.timingCategory = category;
+				}
+
+				if (variable)
+				{
+					T.timingVar = variable;
+				}
+
+				if (label)
+				{
+					T.timingLabel = label;
+				}
+				
+				/**
+				 * Track time
+				 */
+				dataLayer.push(T);
+			},
+			trackContinue: function(dataLayer, category, variable, label)
+			{
+				this.track(dataLayer, category, variable, label);
+
+				/**
+				 * Reset time
+				 */
+				time = new Date().getTime();
+			}
+		}
+	})();
+
+	/**
+	 * Log error messages to console
+	 *
+	 * @param (string) message
+	 * @return null
+	 */
+	var log = function (message) 
+	{
+	   	window.console && console.log ? console.log(message) : null;
+	};
+
+</script>

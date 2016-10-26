@@ -1,0 +1,70 @@
+<?php
+
+/**
+ *
+ * Default Box Group template
+ *
+ * @package   Balance_Box
+ * @author    Balance Internet Team  <info@balanceinternet.com.au>
+ * @copyright Copyright (c) 2016, Balance Internet  (http://www.balanceinternet.com.au/)
+ *
+ * @var $block \Balance\Box\Block\Group
+ *
+ */
+
+$group = $block->getGroup();
+$boxes = $block->getBoxes();
+if (!$group || !$boxes) return;
+
+?>
+
+<div id="js__balance-box-group-<?php echo $group->getIdentifier(); ?>" class="balance-box balance-box-group-default balance-box-group-<?php echo $group->getIdentifier(); ?> <?php echo $block->getCssClass(); ?>">
+
+    <?php foreach($boxes as $box) : ?>
+        <div class="balance-box-group-slide <?php echo $box->getLayoutClass(); ?>">
+
+            <div class="balance-box-group-container">
+                <?php if ($box->getHeading()) : ?>
+                    <h2 class="balance-box-group-heading">
+                        <?php echo $block->escapeHtml($box->getHeading()); ?>
+                    </h2>
+                <?php endif; ?>
+
+                <?php if ($box->getContent()) : ?>
+                    <div class="balance-box-group-content std">
+                        <?php echo $box->getContent(); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($box->getLink()) : ?>
+                    <a href="<?php echo $box->getLink(); ?>" class="button balance-box-group-button">
+                        <span><span>
+                            <?php echo $block->escapeHtml($box->getButtonText()); ?>
+                        </span></span>
+                    </a>
+                <?php endif; ?>
+            </div>
+
+            <?php if ($box->getMobileImageUrl() || $box->getDesktopImageUrl()) : ?>
+                <img alt="<?php echo $block->escapeHtml($box->getAltText()); ?>" data-mobile-image="<?php echo $box->getMobileImageUrl(); ?>" data-desktop-image="<?php echo $box->getDesktopImageUrl(); ?>" class="balance-box-group-image" id="js__balance-box-img-<?php echo $box->getIdentifier(); ?>">
+            <?php endif; ?>
+
+        </div>
+    <?php endforeach ?>
+</div>
+
+<script>
+require([
+    'jquery',
+    'balance/box'
+], function ($) {
+
+    var options = {
+        imgSelector: '.balance-box-group-image'
+    };
+    var $group  = $('#js__balance-box-group-<?php echo $group->getIdentifier(); ?>');
+
+    $.balance.boxSlider(options, $group);
+
+});
+</script>

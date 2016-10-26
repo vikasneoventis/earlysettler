@@ -1,0 +1,35 @@
+blackfire:
+  extends:
+    file: ../../common/docker-compose.yml
+    service: blackfire
+php-fpm:
+  extends:
+    file: ../../common/docker-compose.yml
+    service: php-fpm
+  volumes:
+    - $WEBSITE_PATH:/var/www
+    - /mnt/web:/mnt/web
+    - ./config/php-fpm/www.conf:/etc/php-fpm.d/www.conf
+  links:
+    - blackfire
+nginx:
+  extends:
+    file: ../../common/docker-compose.yml
+    service: nginx
+  ports:
+    - "80:8080"
+  volumes:
+    - ./config/nginx/www.earlysettler.com.au.conf:/etc/nginx/conf.d/www.earlysettler.com.au.conf
+    - ./config/nginx/www.earlysettler.co.nz.conf:/etc/nginx/conf.d/www.earlysettler.co.nz.conf
+    - ./config/nginx/magento.conf.base:/etc/nginx/conf.d/magento.conf.base
+    - $WEBSITE_PATH:/var/www
+    - /mnt/web:/mnt/web
+  links:
+    - php-fpm
+logrotate:
+  extends:
+    file: ../../common/docker-compose.yml
+    service: logrotate
+  volumes:
+    - /mnt/web/log:/log
+    - /mnt/web/log/magento:/log

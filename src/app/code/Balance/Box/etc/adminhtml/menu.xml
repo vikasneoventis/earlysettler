@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Balance_Box::box_content" title="Box Content" module="Balance_Box" sortOrder="50" parent="Magento_Backend::content" resource="Balance_Box::box_content" />
+        <add id="Balance_Box::box" title="Box" module="Balance_Box" sortOrder="0" parent="Balance_Box::box_content" action="box/box" resource="Balance_Box::box"/>
+        <add id="Balance_Box::group" title="Group" module="Balance_Box" sortOrder="1" parent="Balance_Box::box_content" action="box/group" resource="Balance_Box::group" />
+    </menu>
+</config>

@@ -1,0 +1,19 @@
+<?php if (false !== $data = $this->getDetailPushForward()): ?>
+	<script type="text/javascript">
+
+		/**
+		 * AdWords Dynamic Remarketing
+	 	 */
+		window.google_tag_params.ecomm_pagetype = '<?php echo $data->google_tag_params['ecomm_pagetype'] ?>';
+		window.google_tag_params.ecomm_category = '<?php echo $data->google_tag_params['ecomm_category'] ?>';
+		window.google_tag_params.ecomm_prodid	=  <?php echo $data->google_tag_params['ecomm_prodid'] ?>;
+
+		/**
+		 * Details push
+		 */
+		dataLayer.push(<?php echo $data->push ?>);
+
+		window.G = <?php echo $data->group ?>;
+		
+	</script>
+<?php endif ?>

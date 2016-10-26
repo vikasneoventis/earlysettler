@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+    <data>
+        <!-- General product data -->
+        <product_general>
+            <class>\Xtento\ProductExport\Model\Export\Data\Product\General</class>
+        </product_general>
+        <parent_product>
+            <class>\Xtento\ProductExport\Model\Export\Data\Product\ParentProduct</class>
+        </parent_product>
+        <child_products>
+            <class>\Xtento\ProductExport\Model\Export\Data\Product\Children</class>
+        </child_products>
+        <categories>
+            <class>\Xtento\ProductExport\Model\Export\Data\Product\Categories</class>
+        </categories>
+        <stock>
+            <class>\Xtento\ProductExport\Model\Export\Data\Product\Stock</class>
+        </stock>
+        <!-- General review data -->
+        <review_general>
+            <class>\Xtento\ProductExport\Model\Export\Data\Review\General</class>
+        </review_general>
+        <!-- General category data -->
+        <category_general>
+            <class>\Xtento\ProductExport\Model\Export\Data\Category\General</class>
+        </category_general>
+        <!-- Third party -->
+    </data>
+</config>
+<!--
+/**
+ * Product:       Xtento_ProductExport (2.1.0)
+ * ID:            G7CD++h4QdnedP40rkoUgTXd092YAO8jXoxYTRFnMyk=
+ * Packaged:      2016-10-16T09:33:21+00:00
+ * Last Modified: 2016-09-09T12:16:41+00:00
+ * File:          app/code/Xtento/ProductExport/etc/xtento/export_data.xml
+ * Copyright:     Copyright (c) 2016 XTENTO GmbH & Co. KG <info@xtento.com> / All rights reserved.
+ */
+-->

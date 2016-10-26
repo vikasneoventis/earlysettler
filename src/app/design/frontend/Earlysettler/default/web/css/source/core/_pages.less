@@ -1,0 +1,95 @@
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .pages {
+        .lib-pager();
+
+        .action {
+            @_shadow: inset 0 1px 0 0 @color-white, inset 0 -1px 0 0 fade(@border-color__base, 30);
+
+            //.lib-css(box-shadow, @_shadow);
+            //border-radius: 3px;
+            //padding: 0 8px;
+            border: none;
+            padding: 0 15px 0 0;
+            &.previous, &.next {
+                > span {
+                    position: static;
+                    text-transform: uppercase;
+                    &.label {
+                        display: none;
+                    }
+                }
+            }
+            &.previous {
+                margin-right: 15px;
+            }
+
+            &.next {
+                margin-left: 15px;
+            }
+        }
+        .label {
+            position: relative;
+            font-weight: 600;
+            color: #1f1f1f;
+            letter-spacing: @text-letter-spacing;
+            text-transform: uppercase;
+        }
+        .pages-items {
+            .item {
+                border: 1px solid #e4e4e3;
+                min-width: 44px;
+                height: 44px;
+                padding: 5px 0;
+
+                .lib-css(box-sizing,border-box,1);
+                &.current {
+                    border-color: @color-black;
+                }
+                a, strong {
+                    color: @color-gray-darken5;
+                    background: @color-white;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .pages {
+        & &-items {
+            display: block;
+            padding: 2px 40px 0;
+            position: relative;
+            white-space: normal;
+            z-index: 1;
+        }
+
+        &-item-previous {
+            left: 0;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+        }
+
+        &-item-next {
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 1;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+<?php if($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getAssemblyIntructions(), 'assembly_intructions')) : ?>
+    <div class="assembly-intructions-info">
+        <?php echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getAssemblyIntructions(), 'assembly_intructions')?>
+    </div>
+<?php endif; ?>

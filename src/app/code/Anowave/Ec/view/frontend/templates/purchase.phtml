@@ -1,0 +1,86 @@
+<?php echo $this->getChildHtml('ec_datalayer') ?>
+<script type="text/javascript">
+
+	var EC = [], Purchase = [], FacebookProducts = [];
+
+	/* Dynamic remarketing */
+	window.google_tag_params = window.google_tag_params || {};
+
+	/* Default pagetype */
+	window.google_tag_params.ecomm_pagetype = '<?php echo $this->getPageType() ?>';
+
+	/* Grouped products collection */
+	window.G = [];
+
+	/**
+	 * Global revenue 
+	 */
+	window.revenue = 0;
+
+	/**
+	 * DoubleClick
+	 */
+	window.DoubleClick = 
+	{
+		DoubleClickRevenue:	 	0,
+		DoubleClickTransaction: 0,
+		DoubleClickQuantity: 	0
+	}
+	
+
+	<?php if ($this->getOrderIds()):?>
+
+		/**
+		 * Push transaction
+	 	 */
+		dataLayer.push(<?php echo $this->getPurchasePush($block) ?>);
+
+		<?php $google_tag_params = $this->getPurchaseGoogleTagParams($block) ?>
+
+		/**
+		 * AdWords Dynamic Remarketing page type
+		 */
+		window.google_tag_params.ecomm_pagetype		= '<?php echo __('purchase') ?>';
+
+		/**
+		 * AdWords Dynamic Remarketing value(s)
+		 */
+		window.google_tag_params.ecomm_prodid 		= <?php echo json_encode($google_tag_params->ecomm_prodid) ?>;
+		window.google_tag_params.ecomm_pvalue 		= <?php echo json_encode($google_tag_params->ecomm_pvalue) ?>;
+		window.google_tag_params.ecomm_pname 		= <?php echo json_encode($google_tag_params->ecomm_pname) ?>;
+		window.google_tag_params.ecomm_totalvalue  	= <?php echo $google_tag_params->ecomm_totalvalue ?>;
+
+		/**
+		 * AdWords Conversion Tracking
+		 */
+		<?php if ($this->getAdwords()->getGoogleConversionId()) : ?>
+
+			window.google_conversion_id 		= <?php echo $this->getAdwords()->getGoogleConversionId() ?>;
+			
+			window.google_conversion_value 		= '<?php echo $this->getRevenue() ?>';
+			window.google_conversion_language 	= '<?php echo $this->getAdwords()->getGoogleConversionLanguage() ?>';
+			window.google_conversion_format 	= '<?php echo $this->getAdwords()->getGoogleConversionFormat() ?>';
+			window.google_conversion_label 		= '<?php echo $this->getAdwords()->getGoogleConversionLabel() ?>';
+			window.google_conversion_color		= '<?php echo $this->getAdwords()->getGoogleConversionColor() ?>';
+			window.google_conversion_currency 	= '<?php echo $this->getAdwords()->getGoogleConversionCurrency() ?>';
+		
+		<?php endif ?>
+	
+	<?php endif ?>	
+
+	/**
+	 * User-ID Tracking
+	 */
+	dataLayer.push(<?php echo $this->getVisitorPush() ?>);
+	
+</script>
+<?php if ($this->getOrders() && $this->getAdwords()->getGoogleConversionId()) : ?>
+	<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+    <?php foreach ($this->getOrders() as $order): ?>
+            <noscript><img height=1 width=1 border=0 src="//www.googleadservices.com/pagead/conversion/<?php echo $this->getAdwords()->getGoogleConversionId() ?>/?value=<?php echo $this->getRevenue() ?>&label=<?php echo $this->getAdwords()->getGoogleConversionLabel() ?>&script=0"></noscript>
+    <?php endforeach; ?>
+<?php endif; ?>
+<?php echo $this->getChildHtml('ec_impressions') ?>
+<?php echo $this->getChildHtml('ec_search') ?>
+<?php echo $this->getChildHtml('ec_detail') ?>
+<?php echo $this->afterBody() ?>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<ec>
+			<general>
+				<code_position>1</code_position>
+			</general>
+			<selectors>
+				<cart>//button[@id="product-addtocart-button"]</cart>
+				<cart_delete>//a[contains(@class,"action-delete")]|//a[contains(@class,"remove")]</cart_delete>
+				<list>//ol[contains(@class, "products")]/li</list>
+				<click>div/a</click>
+			</selectors>
+		</ec>
+	</default>
+</config>

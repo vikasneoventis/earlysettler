@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Balance\Box\Api\Data\BoxInterface" type="Balance\Box\Model\Box" />
+    <preference for="Balance\Box\Api\Data\GroupInterface" type="Balance\Box\Model\Group" />
+    <virtualType name="BoxGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BoxGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Balance\Box\Model\Resource\Box\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">BoxGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Balance\Box\Model\ResourceModel\Box\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">balance_box_single</argument>
+            <argument name="resourceModel" xsi:type="string">Balance\Box\Model\ResourceModel\Box</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="GroupGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="GroupGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Balance\Box\Model\Resource\Group\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">GroupGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Balance\Box\Model\ResourceModel\Group\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">balance_box_group</argument>
+            <argument name="resourceModel" xsi:type="string">Balance\Box\Model\ResourceModel\Group</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="box_box_listing_data_source" xsi:type="string">Balance\Box\Model\ResourceModel\Box\Grid\Collection</item>
+                <item name="box_group_listing_data_source" xsi:type="string">Balance\Box\Model\ResourceModel\Group\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

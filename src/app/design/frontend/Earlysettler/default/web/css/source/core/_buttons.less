@@ -1,0 +1,195 @@
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    //  Using buttons mixins
+    button,
+    a.action.primary {
+        .lib-css(border-radius, @button__border-radius);
+    }
+
+    button {
+        &:not(.primary) {
+            //.lib-css(box-shadow, @button__shadow);
+
+            &:active {
+                //.lib-css(box-shadow, @button__shadow-active);
+            }
+        }
+    }
+
+    body {
+        &:not(._keyfocus) {
+            button {
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    button {
+        .lib-css(min-width, 103px);
+        .lib-css(border-radius, @button__border-radius);
+        .lib-css(text-transform, uppercase);
+        .lib-css(border, none);
+        &:active {
+            //.lib-css(box-shadow, @button__shadow);
+        }
+    }
+
+    a.action.primary {
+        .lib-link-as-button();
+    }
+
+    .action.primary {
+        .lib-button-primary();
+    }
+
+    /* ============================================ *
+     * Button
+     * ============================================ */
+
+    @f-btn-standard: @f-stack-semibold;
+    @bg-btn-standard: #222222;
+    @bg-btn-standard-over: #000;
+    @btn-standard-padding: 16px 40px;
+
+    @f-btn-other: @f-stack-semibold;
+    @bg-btn-other: #8d98a1;
+    @bg-btn-other-over: #ccc;
+    @c-border-btn-other: @c-white;
+    @c-border-btn-other-over: @c-white;
+
+    @f-btn-special: @f-stack-semibold;
+    @bg-btn-special: #d93e70;
+    @bg-btn-special-over: #fa437e;
+    @btn-special-padding: 9px 30px;
+
+
+    @f-btn-func: @f-stack-semibold;
+    @c-btn-func: @c-blue;
+    @bg-btn-func: @c-white;
+    @bg-btn-func-over: @c-blue;
+    @padding-btn-func: 9px 30px;
+    @border-btn-func: 2px solid @c-blue;
+    @btn-border-radius: 25px;
+
+    .btn-standard {
+        .lib-button();
+        font-weight: @font-weight__extrabold;
+        text-transform: uppercase;
+
+        &.btn-over,
+        &:active,
+        &:focus,
+        &:hover {
+            //background: @bg-btn-standard-over;
+            background-color: @button__hover__background;
+            text-decoration: none;
+            color: @c-white;
+        }
+    }
+
+    .btn-other {
+        .lib-button(
+            @_button-font-size: @button-other__font-size,
+            @_button-color: @button-other__color,
+            @_button-border: @button-other__border,
+            @_button-background: @button-other__background,
+            @_button-padding: @button-other__padding,
+            @_button-color-hover: @button-other__hover__color,
+            @_button-background-hover: @button-other__hover__background,
+            @_button-border-hover: @button-other__border
+        );
+        &.btn-over,
+        &:active,
+        /*&:disabled,*/
+        &:focus,
+        &:hover {
+            background: @button-other__hover__background;
+            font-weight: @font-weight__extrabold;
+            text-decoration: none;
+        }
+    }
+
+    .btn-special {
+        .lib-button-primary();
+        //&:extend(.btn-standard all);
+        //background: @bg-btn-special;
+        font-weight: @font-weight__extrabold;
+        &.btn-over,
+        &:active,
+        /*&:disabled,*/
+        &:focus,
+        &:hover {
+            background: @button-primary__hover__background;
+            text-decoration: none;
+        }
+    }
+
+    .btn-func {
+        &:extend(.btn-standard all);
+        &.btn-over,
+        &:active,
+        /*&:disabled,*/
+        &:focus,
+        &:hover {
+            background: @bg-btn-func-over;
+            text-decoration: none;
+        }
+
+        /*&:before {
+            .fei-icon();
+            content: @fei-var-icon_pin;
+            font-size: @f-size-xxl;
+            margin-right: 10px;
+            vertical-align: top;
+        }*/
+    }
+
+
+    *[class^="button"],
+    .subscribe .button,
+    a[class^="button-"],
+    .button {
+        &:extend(.btn-standard all);
+    }
+
+    a[class*="btn-continue"],
+    a.btn-checkout-back,
+    .btn-continue {
+        &:extend(.btn-other all);
+    }
+
+    a.btn-cart,
+    .btn-cart {
+        &:extend(.btn-special all);
+    }
+
+    a[class*="cart-link"] {
+    }
+
+    a.check-stock-button {
+        &:extend(.btn-func all);
+        display: inline-block;
+        line-height: 100%;
+        padding: 8px 15px;
+        span {
+            display: inline-block;
+            width: auto;
+            vertical-align: top;
+            &:first-letter {
+                text-transform: uppercase;
+            }
+        }
+    }
+
+}

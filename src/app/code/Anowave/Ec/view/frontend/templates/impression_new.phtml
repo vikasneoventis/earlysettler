@@ -1,0 +1,18 @@
+<?php if (false !== $data = $this->getImpressionPushForward()): ?>
+
+	<script>
+
+		/**
+		 * AdWords Dynamic Remarketing
+	 	 */
+		window.google_tag_params.ecomm_pagetype = '<?php echo $data->google_tag_params['ecomm_pagetype']?>';
+		window.google_tag_params.ecomm_category = '<?php echo $data->google_tag_params['ecomm_category']?>';
+
+		/**
+		 * Push impressions
+		 */
+		dataLayer.push(<?php echo $data->push ?>);
+
+	</script>
+	
+<?php endif ?>

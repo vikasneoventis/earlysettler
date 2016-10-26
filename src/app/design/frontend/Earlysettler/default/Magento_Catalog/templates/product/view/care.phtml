@@ -1,0 +1,5 @@
+<?php if($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getCare(), 'care')) : ?>
+    <div class="care-info">
+        <?php echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getCare(), 'care')?>
+    </div>
+<?php endif; ?>

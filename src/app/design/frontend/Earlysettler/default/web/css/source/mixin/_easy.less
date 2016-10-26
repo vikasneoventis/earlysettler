@@ -1,0 +1,533 @@
+//
+// Magento Enterprise Edition
+//
+// NOTICE OF LICENSE
+//
+// This source file is subject to the Magento Enterprise Edition End User License Agreement
+// that is bundled with this package in the file LICENSE_EE.txt.
+// It is also available through the world-wide-web at this URL:
+// http://www.magento.com/license/enterprise-edition
+// If you did not receive a copy of the license and are unable to
+// obtain it through the world-wide-web, please send an email
+// to license@magento.com so we can send you a copy immediately.
+//
+// DISCLAIMER
+//
+// Do not edit or add to this file if you wish to upgrade Magento to newer
+// versions in the future. If you wish to customize Magento for your
+// needs please refer to http://www.magento.com for more information.
+//
+// @category    design
+// @package     rwd_default
+// @copyright Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+// @license http://www.magento.com/license/enterprise-edition
+//
+
+// =============================================
+// Mixin - all content
+// =============================================
+
+.easy-include (@desktop-value, @mobile-value){
+
+}
+
+
+/* ============================================ *
+ * Add Calculator for property
+ * ============================================ */
+
+.calc(@property, @expression) {
+    @{property}: -webkit-calc(@expression);
+    @{property}: calc(@expression);
+}
+
+/*
+// ----------------------------------------------
+// Usage example:
+// use mixins to test whether styles should be applied.
+// ----------------------------------------------
+
+
+// Renders at fixed value
+.test {
+  .calc(width, "25% - 1em");
+}
+
+// output:
+
+.test {
+  width: -webkit-calc(25% - 1em);
+  width: calc(25% - 1em);
+}
+
+// ----------------------------------------------
+*/
+
+
+// This mixin outputs the styles to allow for grids with more than 3 columns
+.menu-grid(@column-count, @container-width, @col-num:"") {
+
+    /* Config: Columns + flexible gutter */
+    @column-gutters: (@column-count) - 1;
+    @container: @container-width - (2 * @trim);
+    @column-width: (@container - (@column-gutters * @product-column-spacing)) / @column-count;
+
+    /* Set column config */
+
+    /*.grid@{column-count}-@{col-num} {*/
+    width: percentage(@col-num / @column-count);
+    display:inline-block;
+    vertical-align: top;
+    /*}*/
+}
+
+.triangle-active() {
+    &:before {
+        border-color: transparent transparent #fff;
+        border-style: solid;
+        border-width: 0 13px 13px;
+        content: "";
+        position: absolute;
+        right: 53px;
+        top: -12px;
+        z-index: 2;
+    }
+    &:after {
+        border-color: transparent transparent @c-border;
+        border-style: solid;
+        border-width: 0 13px 13px;
+        content: "";
+        position: absolute;
+        right: 53px;
+        top: -14px;
+    }
+}
+
+.easy-grid(@num-col,@device-width,@column-spacing) {
+
+    /* Config: two columns + flexible gutter */
+    // Container: 600 - (2 * 30 trim wide) = 540
+    @column-spacing: 20;
+    @column-count: @num-col;
+    @column-gutters: @num-col - 1;
+    @container: 728 - (@column-gutters * @column-spacing);  // 600 - (1 * 20) =580
+
+    // Math: (540 - (1 * 30 gutter)) / 2 items = 160
+    @column-width: (728 - (@column-gutters * @column-spacing)) / @column-count; // (580 -(1* 20)) / 2 = 280
+
+    & {
+        /* Undo two-column config */
+        > *:nth-child(odd) {
+            clear: none;
+        }
+        > *:nth-child(even) {
+            margin-right: percentage(@column-spacing / 728);
+        }
+
+        /* Set three-column config */
+        > * {
+            width: percentage(@column-width / 728);
+            margin-right: percentage(@column-spacing / 728);     //  20/280
+        }
+        > *:nth-child(@{column-count}n+1) {
+            clear: left;
+        }
+        > *:nth-child(@{column-count}n) {
+            margin-right: 0;
+        }
+        > * {
+            float: left;
+        }
+    }
+}
+
+
+// =============================================
+// Mixin - font size
+// =============================================
+
+@mq-support: true;
+@f-size-in-var-support-desktop-first: true;    // it mean all f-size,f-size-xs..... in var.scss currently they support desktop
+
+@f-size-desktop-base: @f-size;
+@f-size-mobile-base: @f-size-s;
+@f-size-mobile-s: @f-size-xs;
+@f-size-mobile-l: @f-size;
+@f-size-mobile-xl: @f-size-l;
+
+// Convert font size from desktop first in _var.scss to Mobile first
+.easy-fs(@f-size-desktop-value, @f-size-mobile-value: null, @f-size-tablet-value: null) {
+
+    & when (@f-size-in-var-support-desktop-first = true) {
+        @f-size-base: @f-size-desktop-base; // font size base will set to body tag
+        // Convert font size from desktop first to Mobile first and allow support font size mobile first
+
+        & when not (@f-size-mobile-value = null) {
+            font-size: @f-size-mobile-value;
+        }
+        & when (@f-size-desktop-value = @f-size-desktop-base) {
+            font-size: @f-size-mobile-base;     // convert desktop to font size mobile
+        }
+        & when (@f-size-desktop-value > 0px) and (@f-size-desktop-value < @f-size-base) {   // normally font size less than 10px will can't render font smaller than 10px
+            font-size: @f-size-mobile-s;
+        }
+        & when (@f-size-desktop-value = @f-size-xl),(@f-size-desktop-value = @f-size-l) {
+            font-size: @f-size-mobile-l;
+        }
+        & when (@f-size-desktop-value = @f-size-xxl) {
+            font-size: @f-size-mobile-xl;
+        }
+        & when not (@f-size-desktop-value = null) {
+            .bp(min-width, @bp-small +1, {
+                font-size: @f-size-tablet-value;
+            });
+            .bp(min-width, @bp-large +1, {
+                font-size: @f-size-desktop-value;
+            });
+        }
+        & when (@f-size-desktop-value = null) {
+            .bp(min-width, @bp-small +1, {
+                font-size: @f-size-desktop-value;
+            });
+        }
+    }
+}
+
+/*
+// ----------------------------------------------
+// Usage example:
+// For IE set @mq-support to false.
+// Set the fixed value.
+// Then use mixins to test whether styles should be applied.
+// ----------------------------------------------
+
+// Renders at fixed value
+.fs (@f-size)
+
+// ----------------------------------------------
+*/
+
+// =============================================
+// Mixin - border-radius
+// =============================================
+
+.easy-border-radius(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+
+    .border-radius(@mobile-value);
+
+    & when not (@tablet-value = null) {
+        .bp(min-width, @bp-small +1, {
+            .border-radius(@tablet-value);
+        });
+
+        .bp(min-width, @bp-large +1, {
+            .border-radius(@desktop-value);
+        });
+    }
+    & when(@tablet-value = null) {
+        .bp(min-width, @bp-small +1, {
+            .border-radius(@desktop-value);
+        });
+    }
+}
+
+// =============================================
+// Mixin - Sample
+// =============================================
+
+.easy-sample(@desktop-value: null, @mobile-value: null, @tablet-value: null, @attr: null, @direct: null) {
+    @suffix-direct: '';
+
+    & when not (@direct = null) {
+        @suffix-direct: '-@{direct}';
+    }
+    & when not (@mobile-value = null) {
+        @{attr}@{suffix-direct}: @mobile-value;
+    }
+    & when not (@tablet-value = null) {
+        .bp(min-width, @bp-small +1, {
+            @{attr}@{suffix-direct}: @tablet-value;
+        });
+        .bp(min-width, @bp-large +1, {
+            @{attr}@{suffix-direct}: @desktop-value;
+        });
+    }
+    & when not (@desktop-value = null) {
+        .bp(min-width, @bp-small +1, {
+            @{attr}@{suffix-direct}: @desktop-value;
+        });
+    }
+}
+
+// =============================================
+// Mixin - Margin
+// =============================================
+
+.easy-margin(@desktop-value: null, @mobile-value: null, @tablet-value: null, @direct: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,margin,@direct);
+}
+.easy-margin-top(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-margin(@desktop-value,@mobile-value,@tablet-value,top);
+}
+.easy-margin-right(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-margin(@desktop-value,@mobile-value,@tablet-value,right);
+}
+.easy-margin-bottom(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-margin(@desktop-value,@mobile-value,@tablet-value,bottom);
+}
+.easy-margin-left(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-margin(@desktop-value,@mobile-value,@tablet-value,left);
+}
+
+/*
+// ----------------------------------------------
+// Usage example:
+// use mixins to test whether styles should be applied.
+// ----------------------------------------------
+
+
+// Renders at fixed value
+.margin(0,10px,null,right);
+
+// output:
+
+    margin: 0;
+    @media only screen and min-width > 600px {
+        margin-right: 10px;
+    }
+
+// ----------------------------------------------
+*/
+
+// =============================================
+// Mixin - padding
+// =============================================
+
+.easy-padding(@desktop-value: null, @mobile-value: null, @tablet-value: null, @direct: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,padding,@direct);
+}
+
+.easy-padding-top(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-padding(@desktop-value,@mobile-value,@tablet-value,top);
+}
+.easy-padding-right(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-padding(@desktop-value,@mobile-value,@tablet-value,right);
+}
+.easy-padding-bottom(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-padding(@desktop-value,@mobile-value,@tablet-value,bottom);
+}
+.easy-padding-left(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-padding(@desktop-value,@mobile-value,@tablet-value,left);
+}
+
+// =============================================
+// Mixin - line height
+// =============================================
+
+.easy-line-height(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,line-height);
+}
+
+// =============================================
+// Mixin - min height
+// =============================================
+
+.easy-min-height(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,min-height);
+}
+
+// =============================================
+// Mixin - max-height
+// =============================================
+
+.easy-max-height(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,max-height);
+}
+
+// =============================================
+// Mixin - top right bottom left
+// =============================================
+
+.easy-top(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,top);
+}
+.easy-right(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,right);
+}
+.easy-bottom(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,bottom);
+}
+.easy-left(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,left);
+}
+
+// =============================================
+// Mixin - display
+// =============================================
+
+.easy-display(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,display);
+}
+
+// =============================================
+// Mixin - letter spacing
+// =============================================
+
+.easy-letter-spacing(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,letter-spacing);
+}
+
+// =============================================
+// Mixin - clear
+// =============================================
+
+.easy-clear(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,clear);
+}
+// =============================================
+// Mixin - background
+// =============================================
+
+.easy-background(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,background);
+}
+
+.easy-background-size(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,background-size);
+}
+
+.easy-background-position(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,background-position);
+}
+// =============================================
+// Mixin - width
+// =============================================
+
+.easy-width(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,width);
+}
+
+// =============================================
+// Mixin - height
+// =============================================
+
+.easy-height(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+    .easy-sample(@desktop-value,@mobile-value,@tablet-value,height);
+}
+
+// =============================================
+// Mixin - border
+// =============================================
+
+.easy-border(@desktop-value: null, @mobile-value: null, @tablet-value: null, @direct: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,border,@direct);
+}
+
+.easy-border-top(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-border(@desktop-value,@mobile-value,@tablet-value,top);
+}
+.easy-border-right(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-border(@desktop-value,@mobile-value,@tablet-value,right);
+}
+.easy-border-bottom(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-border(@desktop-value,@mobile-value,@tablet-value,bottom);
+}
+.easy-border-left(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-border(@desktop-value,@mobile-value,@tablet-value,left);
+}
+
+// =============================================
+// Mixin - color
+// =============================================
+
+.easy-color(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,color);
+}
+
+// =============================================
+// Mixin - float
+// =============================================
+
+.easy-float(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,float);
+}
+
+// =============================================
+// Mixin - text align
+// =============================================
+
+.easy-text-align(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,text-align);
+}
+
+// =============================================
+// Mixin - text transform
+// =============================================
+
+.easy-text-transform(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,text-transform);
+}
+
+// =============================================
+// Mixin - overflow
+// =============================================
+
+.easy-overflow(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,overflow);
+}
+
+// =============================================
+// Mixin - min width
+// =============================================
+
+.easy-min-width(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,min-width);
+}
+
+// =============================================
+// Mixin - max width
+// =============================================
+
+.easy-max-width(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,max-width);
+}
+
+// =============================================
+// Mixin - font-weight
+// =============================================
+
+.easy-font-weight(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,font-weight);
+}
+
+.easy-font-size(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,font-size);
+}
+
+.easy-font-family(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,font-family);
+}
+
+// =============================================
+// Mixin - position
+// =============================================
+
+.easy-position(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,position);
+}
+
+// =============================================
+// Mixin - vertical-align
+// =============================================
+
+.easy-vertical-align(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,vertical-align);
+}
+
+// =============================================
+// Mixin - white-space
+// =============================================
+
+.easy-white-space(@desktop-value: null, @mobile-value: null, @tablet-value: null) {
+  .easy-sample(@desktop-value,@mobile-value,@tablet-value,white-space);
+}

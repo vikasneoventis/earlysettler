@@ -1,0 +1,40 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<div class="detail">
+    <div class="row">
+        <div class="image-box-detail">
+            <div class="image-box-detail-inner">
+                <div class="media-wrap">
+                    <?php echo $block->getChildHtml('product.info.media'); ?>
+                </div>
+                <?php echo $block->getChildHtml('catalog.product.related'); ?>
+            </div>
+        </div>
+
+        <div class="info-box-detail">
+            <div class="info-box-detail-inner">
+                <div class="info-detail-container">
+                    <?php echo $block->getChildHtml('product.info.main'); ?>
+                    <div class="social-catalog">
+                        <div class="social-detail">
+                            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57e4dbb04ed50119" async="async"></script>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-info-product">
+                    <?php echo $block->getChildHtml('detail.bottom'); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <?php echo $block->getChildHtml('related.product'); ?>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Anowave_Ec::ec" title="Google Tag Manager" module="Anowave_Ec" action="adminhtml/system_config/edit/section/ec" sortOrder="-1" parent="Anowave_Package::package" resource="Anowave_Ec::ec"/>
+     </menu>
+</config>

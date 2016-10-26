@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="balance_box_widget" class="Balance\Box\Block\Widget\Box">
+        <label translate="true">Box</label>
+        <description translate="true">Displays a single box</description>
+        <parameters>
+            <parameter name="box_id" xsi:type="select" source_model="Balance\Box\Model\Box\Source\Box" required="true" visible="true" sort_order="0" >
+                <label translate="true">Box</label>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="balance_group_widget" class="Balance\Box\Block\Widget\Group">
+        <label translate="true">Box Group</label>
+        <description translate="true">Displays a box group</description>
+        <parameters>
+            <parameter name="group_id" xsi:type="select" source_model="Balance\Box\Model\Group\Source\Group" required="true" visible="true" sort_order="0">
+                <label translate="true">Group</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
